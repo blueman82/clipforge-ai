@@ -25,7 +25,7 @@ export default async function DashboardPage() {
             Welcome back, {session?.user?.name?.split(' ')[0] || 'Creator'}!
           </h1>
           <p className="text-muted-foreground">
-            Here's what's happening with your projects today.
+            Here&apos;s what&apos;s happening with your projects today.
           </p>
         </div>
         <Button asChild>
