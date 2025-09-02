@@ -1,9 +1,8 @@
-'use client'
-
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
+
+import { AuthErrorClient } from '@/components/auth/auth-error-client'
 
 function AuthError() {
   const searchParams = useSearchParams()
