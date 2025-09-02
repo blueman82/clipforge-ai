@@ -61,14 +61,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Payment processing (Stripe) configuration
   - AI service integrations (OpenAI, ElevenLabs, Azure Speech)
   - Asset API configurations (Pexels, Unsplash)
-- Stripe billing integration setup:
+- Complete Stripe billing integration:
   - Stripe client configuration with error handling
   - Credit packages pricing structure (10, 50, 100, 500 credits)
   - Subscription plans (Starter, Pro with monthly/yearly options)
   - TypeScript types for packages and plans
+  - Checkout API route with customer creation and session handling
+  - Webhook handler for payment processing and credit allocation
+  - Support for one-time purchases and recurring subscriptions
+  - Automatic credit ledger tracking for all transactions
 
 ### In Development
-- Stripe billing integration
 - Affiliate system UI
 - Admin dashboard
 
