@@ -23,13 +23,12 @@
 - [ ] Set up Stripe billing integration
 
 ### 📋 Up Next
-1. Implement rendering pipeline with workers (BullMQ + FFmpeg)
-2. Set up Stripe billing integration
-3. Build affiliate system
-4. Configure monitoring and observability
-5. Create additional marketing pages (affiliate, blog)
-6. Add SEO and legal pages
-7. Deploy to production
+1. Set up Stripe billing integration
+2. Build affiliate system
+3. Configure monitoring and observability
+4. Create additional marketing pages (affiliate, blog)
+5. Add SEO and legal pages
+6. Deploy to production
 
 ## Epic Progress
 
