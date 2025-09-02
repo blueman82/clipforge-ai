@@ -106,8 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Known Issues
 - pnpm workspace installation hangs on Apple Silicon (ARM64)
 - npm incompatible with workspace:* syntax from pnpm (workspace: is pnpm-specific)
-- Vercel was auto-detecting Turbo and defaulting to npm
-- Solution: Force pnpm in vercel.json with install and build commands
+- pnpm on Vercel encountering ERR_INVALID_THIS registry errors
+- Solution: Use yarn which supports workspaces and works on Vercel
 
 ### Planned Features
 - Export functionality with credit system
