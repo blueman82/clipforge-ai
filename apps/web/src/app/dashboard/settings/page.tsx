@@ -47,7 +47,7 @@ const mockUserSettings = {
       github: false
     },
     twoFactor: false,
-    apiKey: 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+    apiKey: process.env.STRIPE_SECRET_KEY || ''
   },
   preferences: {
     theme: 'system',
