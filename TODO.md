@@ -29,7 +29,8 @@
 - [x] Push complete codebase to GitHub for deployment
 
 ### 🚧 In Progress
-- [ ] Deploy to Vercel for production testing
+- [ ] Deploy to Vercel for production testing (ready but blocked by local dev issues)
+- [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64
 - [ ] Set up cloud database and Redis for production
 
 ### 📋 Up Next
