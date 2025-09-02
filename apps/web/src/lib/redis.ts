@@ -5,9 +5,8 @@ function createRedisConnection() {
   if (process.env.REDIS_URL) {
     // Use Redis URL if provided (for services like Upstash, Railway, etc.)
     return new Redis(process.env.REDIS_URL, {
-      retryDelayOnFailover: 100,
-      enableReadyCheck: false,
       maxRetriesPerRequest: null,
+      enableReadyCheck: false,
     })
   }
 
@@ -16,9 +15,8 @@ function createRedisConnection() {
     host: process.env.REDIS_HOST || 'localhost',
     port: parseInt(process.env.REDIS_PORT || '6379'),
     password: process.env.REDIS_PASSWORD,
-    retryDelayOnFailover: 100,
-    enableReadyCheck: false,
     maxRetriesPerRequest: null,
+    enableReadyCheck: false,
   }
 
   return new Redis(redisConfig)
