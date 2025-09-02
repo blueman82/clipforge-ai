@@ -29,10 +29,9 @@
 - [x] Push complete codebase to GitHub for deployment
 
 ### 🚧 In Progress
-- [ ] Merge feature branch to main (60 commits ready)
-- [ ] Deploy to Vercel for production testing (ready but blocked by local dev issues)
-- [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64
+- [ ] Deploy to Vercel for production testing (main branch ready)
 - [ ] Set up cloud database and Redis for production
+- [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
 ### 📋 Up Next
 1. Build affiliate system
