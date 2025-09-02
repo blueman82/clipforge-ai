@@ -107,6 +107,13 @@ export async function POST(
     }
 
     // Add job to script generation queue
+    if (!queues) {
+      return NextResponse.json(
+        { error: 'Redis not available - job queues disabled' },
+        { status: 503 }
+      )
+    }
+    
     const scriptJob = await queues.scriptGeneration.add(
       `script-${project.id}`,
       jobData,
