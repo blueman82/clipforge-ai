@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created and merged PR #1 with navigation and security fixes
   - Cleaned up feature branch after successful merge
   - Main branch ready for production deployment
+- **Platform-Specific Dependency Fix**: Resolved Vercel build issues
+  - Removed lockfiles to prevent macOS ARM64 vs Linux x64 conflicts
+  - Added lockfiles to .gitignore for platform-agnostic builds
+  - Allows Vercel to generate appropriate dependencies for Linux build environment
+  - Identified TypeScript/Radix UI navigation menu type issues for future resolution
 
 ### Bug Fixes (2025-09-02)
 - **Navigation Menu Hydration Fix**: Fixed nested anchor tag hydration errors in navigation menu
