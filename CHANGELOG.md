@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
+### Deployment Preparation (2025-09-02 23:20)
+- **Fixed npm install on Vercel**: Removed SWC optionalDependencies causing platform conflicts
+  - Removed all @next/swc-* binaries from optionalDependencies in package.json
+  - Next.js automatically handles platform-specific SWC binary installation
+  - Fixes EBADPLATFORM error: "Unsupported platform for @next/swc-darwin-arm64"
+  - Allows npm to correctly install Linux x64 binaries on Vercel build environment
+
 ### Deployment Preparation (2025-09-02 23:00)
 - **Security Improvements**: Removed hardcoded API keys for production deployment
   - Replaced hardcoded Stripe test API key with environment variable
