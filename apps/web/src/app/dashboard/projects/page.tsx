@@ -98,8 +98,6 @@ function formatViews(views: number) {
 }
 
 export default async function ProjectsPage() {
-  const session = await getServerSession(authOptions)
-
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
