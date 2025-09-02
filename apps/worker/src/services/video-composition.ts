@@ -238,6 +238,33 @@ export class VideoCompositionService {
     })
   }
 
+  private async concatenateAudioSegments(audioData: AudioData): Promise<string> {
+    const concatListPath = path.join(this.tempDir, 'audio-concat-list.txt')
+    const audioPaths = audioData.segments.map(segment => {
+      // Extract file path from audioUrl (assuming it's a local file path)
+      return segment.audioUrl
+    })
+    
+    const concatList = audioPaths.map(p => `file '${path.resolve(p)}'`).join('\n')
+    await fs.writeFile(concatListPath, concatList)
+
+    const outputPath = path.join(this.tempDir, 'concatenated-audio.mp3')
+
+    return new Promise((resolve, reject) => {
+      ffmpeg()
+        .input(concatListPath)
+        .inputOptions(['-f concat', '-safe 0'])
+        .audioCodec('copy')
+        .output(outputPath)
+        .on('end', () => {
+          fs.remove(concatListPath) // Cleanup concat list
+          resolve(outputPath)
+        })
+        .on('error', reject)
+        .run()
+    })
+  }
+
   private async addAudioTrack(
     videoPath: string,
     audioPath: string,
