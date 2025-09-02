@@ -67,7 +67,13 @@
   - [x] API endpoint `/api/user/onboarding` with Prisma integration
   - [x] Authentication checking and redirect handling
   - [x] Auto-redirect to dashboard upon completion
-- [ ] Create /robots.txt and /sitemap.xml for SEO optimization
+- [x] **SEO Optimization** - Complete robots.txt and sitemap.xml implementation
+  - [x] `/public/robots.txt` with proper Allow/Disallow rules for public/private pages
+  - [x] `/src/app/sitemap.ts` with comprehensive URL mapping and priority settings
+  - [x] 15+ pages mapped with appropriate changeFrequency and priority
+  - [x] Proper exclusion of /admin/, /dashboard/, /api/, /auth/ routes
+  - [x] Optimized for search engine crawling and indexing
+- [ ] **Export Worker System** - Build watermarking and export functionality
   - [x] Google OAuth: Client ID and Secret obtained (Step 4/4 complete)
   - [ ] Add all credentials (Google OAuth + Stripe) to Vercel environment variables
     - [ ] Locate Google Client Secret in Google Cloud Console credentials page
