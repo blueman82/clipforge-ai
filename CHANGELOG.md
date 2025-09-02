@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - All Next.js metadata warnings resolved
   - Clean build logs with no remaining warnings
   - Removed package-lock.json to eliminate package manager mixing warnings
+  - Fixed ESLint peer dependency warnings by aligning versions to v8.57.0 across workspace
+  - Added resolutions to prevent ESLint version conflicts in Vercel builds
 
 ## [1.0.0] - 2025-09-02
 
