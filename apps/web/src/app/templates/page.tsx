@@ -79,6 +79,13 @@ export default function TemplatesPage() {
   const categories = ["All", "Vertical", "Square", "Horizontal"];
   const aspectRatios = ["All", "9:16", "1:1", "16:9"];
 
+  // Filter templates based on selected criteria
+  const filteredTemplates = templates.filter(template => {
+    const matchesCategory = selectedCategory === 'All' || template.category === selectedCategory
+    const matchesAspect = selectedAspect === 'All' || template.aspect === selectedAspect
+    return matchesCategory && matchesAspect
+  })
+
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Header */}
