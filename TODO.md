@@ -73,12 +73,12 @@
 - ✅ Radix UI primitives (partial)
 - ✅ Theme system with next-themes
 - ✅ Monorepo with pnpm workspaces
+- ✅ NextAuth authentication
+- ✅ Prisma ORM + PostgreSQL
+- ✅ BullMQ job queues
+- ✅ FFmpeg video processing
 - ⏳ Turborepo build orchestration
-- ⏳ NextAuth authentication
-- ⏳ Prisma ORM + PostgreSQL
 - ⏳ Stripe billing integration
-- ⏳ BullMQ job queues
-- ⏳ FFmpeg video processing
 
 ## Current Issues
 - Some Radix UI dependencies need installation (@radix-ui/react-badge doesn't exist)
