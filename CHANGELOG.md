@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Upgraded Next.js from 14.1.0 to 15.5.2 (fixes SWC version mismatch warnings)
   - Upgraded eslint-config-next from 14.1.0 to 15.5.2 (adds ESLint v9 support)
   - All dependency versions now compatible and eliminate build warnings
+  - Fixed Next.js 15 breaking change: headers() now returns Promise<ReadonlyHeaders>
+  - Updated Stripe webhook to properly await headers() before accessing methods
 
 ## [1.0.0] - 2025-09-02
 
