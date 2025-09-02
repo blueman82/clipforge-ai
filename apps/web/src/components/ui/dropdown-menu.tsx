@@ -8,16 +8,23 @@ const DropdownMenu = ({ children }: { children: React.ReactNode }) => {
 
 const DropdownMenuTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ className, children, ...props }, ref) => (
-  <button
-    ref={ref}
-    className={cn("inline-flex items-center", className)}
-    {...props}
-  >
-    {children}
-  </button>
-))
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    asChild?: boolean
+  }
+>(({ className, asChild, children, ...props }, ref) => {
+  if (asChild) {
+    return <>{children}</>
+  }
+  return (
+    <button
+      ref={ref}
+      className={cn("inline-flex items-center", className)}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+})
 DropdownMenuTrigger.displayName = "DropdownMenuTrigger"
 
 const DropdownMenuContent = React.forwardRef<
@@ -25,8 +32,9 @@ const DropdownMenuContent = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {
     align?: string
     sideOffset?: number
+    forceMount?: boolean
   }
->(({ className, align, sideOffset, children, ...props }, ref) => (
+>(({ className, align, sideOffset, forceMount, children, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
