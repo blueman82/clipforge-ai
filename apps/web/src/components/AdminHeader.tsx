@@ -1,1 +1,1 @@
-export { default as AdminHeader } from './admin/header'
+export { AdminHeader } from './admin/header'
