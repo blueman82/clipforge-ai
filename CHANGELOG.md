@@ -106,6 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - All TypeScript checks now pass successfully
 - Deployed TypeScript fixes to production (commit 3093890)
 - Vercel build now uses correct latest commit with all fixes applied
+- Fixed ESLint build error by adding eslint and eslint-config-next to devDependencies
+- Removed package-lock.json to resolve yarn/npm lock file conflicts
 
 ### In Development
 - Affiliate system UI
