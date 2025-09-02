@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
+### Bug Fixes (2025-09-02)
+- **Navigation Menu Hydration Fix**: Fixed nested anchor tag hydration errors in navigation menu
+  - Converted all NavigationMenuLink components to use `asChild` prop properly
+  - Eliminated `passHref` usage causing nested `<a>` tag issues
+  - Resolved React hydration mismatches in header navigation
+
 ### Completed (2025-09-02 21:30)
 - **Complete Website Pages Implementation**:
   - Created `/about` page with company story, team, values, and statistics section
