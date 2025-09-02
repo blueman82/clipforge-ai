@@ -67,7 +67,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -77,10 +77,11 @@ export async function PUT(
 
     const body = await request.json()
     const validatedData = updateProjectSchema.parse(body)
+    const { id } = await params
 
     const project = await prisma.project.findUnique({
       where: {
-        id: params.id,
+        id,
         userId: session.user.id,
         deletedAt: null,
       },
@@ -99,7 +100,7 @@ export async function PUT(
     }
 
     const updatedProject = await prisma.project.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...validatedData,
         updatedAt: new Date(),
@@ -140,7 +141,7 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -148,9 +149,11 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const { id } = await params
+
     const project = await prisma.project.findUnique({
       where: {
-        id: params.id,
+        id,
         userId: session.user.id,
         deletedAt: null,
       },
