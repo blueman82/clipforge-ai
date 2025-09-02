@@ -55,6 +55,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Worker orchestration with progress tracking
   - Job queues for asynchronous video processing
   - Database integration for project status updates
+- Environment configuration template (.env.example) with all required variables:
+  - Database, Redis, and API service configurations
+  - OAuth provider settings (Google, GitHub)
+  - Payment processing (Stripe) configuration
+  - AI service integrations (OpenAI, ElevenLabs, Azure Speech)
+  - Asset API configurations (Pexels, Unsplash)
 
 ### In Development
 - Stripe billing integration
