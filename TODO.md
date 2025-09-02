@@ -51,6 +51,8 @@
 - [x] Resolve all TypeScript compilation errors for Vercel deployment
 - [x] Push TypeScript fixes to remote repository (commit 3093890 with all fixes)
 - [x] Deploy to Vercel for production testing (TypeScript fixes deployed, awaiting build completion)
+- [x] Fix ESLint build error (added eslint and eslint-config-next to devDependencies)
+- [ ] Configure environment variables in Vercel (Stripe, OAuth, NextAuth secrets)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
