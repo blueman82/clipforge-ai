@@ -5,9 +5,6 @@ import Stripe from 'stripe'
 
 import { stripe } from '@/lib/stripe'
 
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.text()
