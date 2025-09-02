@@ -1,10 +1,11 @@
 {
   "buildCommand": "cd apps/web && npm run build",
-  "installCommand": "npm install --legacy-peer-deps",
+  "installCommand": "cd apps/web && npm install --legacy-peer-deps",
   "framework": "nextjs",
   "functions": {
     "apps/web/src/app/api/stripe/webhook/route.ts": {
       "maxDuration": 30
     }
-  }
+  },
+  "rootDirectory": "apps/web"
 }
