@@ -86,6 +86,8 @@
 - [x] Upgraded Next.js from 14.1.0 to 15.5.2 (fixes SWC version mismatch warnings)
 - [x] Upgraded eslint-config-next from 14.1.0 to 15.5.2 (adds ESLint v9 support)
 - [x] Verified all dependency compatibility - no peer dependency conflicts
+- [x] Fixed Next.js 15 breaking change: headers() now returns Promise<ReadonlyHeaders>
+- [x] Updated Stripe webhook to properly await headers() before accessing methods
 - [x] Complete Vercel environment variable setup (all credentials obtained and ready)
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
