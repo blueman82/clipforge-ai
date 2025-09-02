@@ -1,54 +1,105 @@
-import { MetadataRoute } from "next"
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://clipforge-ai.com'
+  
+  // Get current date for lastModified
+  const now = new Date()
+  const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate())
+  
   return [
+    // Homepage - highest priority, changes frequently
     {
-      url: "https://clipforge-ai.vercel.app",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: 'weekly',
       priority: 1,
     },
+    
+    // Core marketing pages - high priority
     {
-      url: "https://clipforge-ai.vercel.app/blog",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://clipforge-ai.vercel.app/templates",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/features`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: "https://clipforge-ai.vercel.app/affiliate",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://clipforge-ai.vercel.app/pricing",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/pricing`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: "https://clipforge-ai.vercel.app/privacy",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
+      url: `${baseUrl}/how-it-works`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/templates`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    
+    // Secondary marketing pages
+    {
+      url: `${baseUrl}/affiliate`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: lastMonth,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: lastMonth,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    
+    // Legal and support pages - lower priority
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: lastMonth,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: "https://clipforge-ai.vercel.app/terms",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
+      url: `${baseUrl}/terms`,
+      lastModified: lastMonth,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: "https://clipforge-ai.vercel.app/cookies",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
+      url: `${baseUrl}/cookies`,
+      lastModified: lastMonth,
+      changeFrequency: 'yearly',
+      priority: 0.2,
+    },
+    
+    // Auth pages - exclude sensitive pages like /dashboard, /admin, /api
+    {
+      url: `${baseUrl}/auth/signup`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.4,
     },
   ]
 }

@@ -28,7 +28,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
   return (
     <header className="h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center px-6">
-        <Link href="/admin" className="flex items-center space-x-2">
+        <Link href="/admin" className="flex items-center space-x-2" >
           <Shield className="h-6 w-6 text-red-600" />
           <span className="font-bold text-xl">ClipForge Admin</span>
         </Link>
@@ -58,13 +58,13 @@ export function AdminHeader({ user }: AdminHeaderProps) {
               </div>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/dashboard/settings">
+                <Link href="/dashboard/settings" >
                   <UserIcon className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/dashboard/settings">
+                <Link href="/dashboard/settings" >
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                 </Link>
@@ -85,5 +85,5 @@ export function AdminHeader({ user }: AdminHeaderProps) {
         </div>
       </div>
     </header>
-  )
+  );
 }
