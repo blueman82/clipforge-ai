@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed Radix UI type conflicts that prevented builds
   - Fixed all 24 TypeScript errors in navigation components
   - Achieved clean build with zero TypeScript errors
+- **Deprecated Package Removal**: Removed fluent-ffmpeg
+  - Replaced deprecated fluent-ffmpeg with native child_process spawn
+  - Eliminates Vercel build warning about unsupported package
+  - Consistent FFmpeg handling across all workers
 
 ### Bug Fixes (2025-09-02)
 - **Navigation Menu Hydration Fix**: Fixed nested anchor tag hydration errors in navigation menu
