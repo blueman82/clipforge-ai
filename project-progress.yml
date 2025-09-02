@@ -64,11 +64,11 @@ epics:
   - id: E07
     name: "Rendering Pipeline & Workers"
     status: in_progress
-    completion: 80
+    completion: 85
     tasks_completed: [T060, T063, T064, T065, T066]
     tasks_in_progress: [T067]
     tasks_pending: [T061, T062, T068, T069]
-    notes: "BullMQ + 4/5 workers complete (Script, TTS, Assets, Composition). Export worker remaining"
+    notes: "BullMQ + workers complete with Redis connection fixes. Redis now optional during builds."
 
   - id: E08
     name: "Storage & CDN"
