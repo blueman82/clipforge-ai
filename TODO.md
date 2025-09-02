@@ -20,6 +20,7 @@
 - [x] Implement complete rendering pipeline with BullMQ workers (script generation, TTS, asset selection, video composition)
 - [x] Fix integration issues and type errors in video rendering pipeline
 - [x] Create comprehensive environment configuration (.env.example) with all required variables
+- [x] Set up Stripe billing integration library with pricing configuration
 
 ### 🚧 In Progress
 - [ ] Set up Stripe billing integration
