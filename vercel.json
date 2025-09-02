@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install --frozen-lockfile=false",
+  "buildCommand": "yarn workspace @clipforge/web build",
+  "installCommand": "yarn install",
   "framework": "nextjs",
   "functions": {
     "src/app/api/stripe/webhook/route.ts": {
