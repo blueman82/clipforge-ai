@@ -34,7 +34,8 @@
 - [x] Fix vercel.json removing hardcoded secret references
 - [x] Fix package.json removing pnpm version requirement for Vercel compatibility
 - [x] Switch Vercel build from pnpm to npm due to registry issues
-- [ ] Deploy to Vercel for production testing (switched to npm, ready to redeploy)
+- [x] Set rootDirectory to apps/web to avoid workspace:* issues
+- [ ] Deploy to Vercel for production testing (set to build only web app)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
