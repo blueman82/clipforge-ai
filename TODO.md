@@ -29,9 +29,11 @@
 - [x] Push complete codebase to GitHub for deployment
 
 ### 🚧 In Progress
-- [ ] Deploy to Vercel for production testing (configuring environment variables)
-- [ ] Set up cloud database (need PostgreSQL connection string)
-- [ ] Add production environment variables to Vercel
+- [x] Set up cloud database (Supabase PostgreSQL configured)
+- [x] Add production environment variables to Vercel (NEXTAUTH_SECRET generated, DATABASE_URL configured)
+- [ ] Deploy to Vercel for production testing (deployment in progress)
+- [ ] Configure OAuth providers (Google, GitHub)
+- [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
 ### 📋 Up Next
