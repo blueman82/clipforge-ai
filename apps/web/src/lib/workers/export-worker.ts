@@ -24,8 +24,8 @@ export interface ExportJobResult {
 }
 
 // Export queue for processing high-quality video exports
-export const exportQueue = new Queue<ExportJobData, ExportJobResult>('export', {
-  connection: redis,
+export const exportQueue = getRedis() ? new Queue<ExportJobData, ExportJobResult>('export', {
+  connection: getRedis()!,
   defaultJobOptions: {
     removeOnComplete: 10,
     removeOnFail: 5,
@@ -35,7 +35,7 @@ export const exportQueue = new Queue<ExportJobData, ExportJobResult>('export', {
       delay: 2000,
     },
   },
-})
+}) : null
 
 export class ExportWorker {
   private tempDir: string
