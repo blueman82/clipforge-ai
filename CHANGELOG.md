@@ -79,6 +79,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Redis container for BullMQ job queues with persistence
   - Redis Insight for monitoring and debugging
   - Complete development environment orchestration
+- Vercel deployment configuration:
+  - Production build and deployment settings
+  - Environment variable mapping for secure secrets
+  - API route configuration with extended timeouts for webhooks
+  - Next.js framework optimization settings
 
 ### In Development
 - Affiliate system UI
