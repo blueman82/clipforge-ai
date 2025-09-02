@@ -30,7 +30,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
+        <Link href="/" className="mr-6 flex items-center space-x-2" >
           <Sparkles className="h-6 w-6 text-primary" />
           <span className="font-bold text-xl">ClipForge AI</span>
         </Link>
@@ -70,16 +70,16 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/pricing" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(
+              <NavigationMenuLink asChild>
+                <Link href="/pricing" className={cn(
                   "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                 )}>
                   Pricing
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/affiliate" legacyBehavior passHref>
+              <Link href="/affiliate"  passHref>
                 <NavigationMenuLink className={cn(
                   "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                 )}>
@@ -91,7 +91,7 @@ export function Header() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/blog"  passHref>
                 <NavigationMenuLink className={cn(
                   "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                 )}>
@@ -121,7 +121,7 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
 const ListItem = ({ className, title, children, href, ...props }: ListItemProps) => {
