@@ -31,7 +31,7 @@
 ### 🚧 In Progress
 - [x] Set up cloud database (Supabase PostgreSQL configured)
 - [x] Add production environment variables to Vercel (NEXTAUTH_SECRET generated, DATABASE_URL configured)
-- [ ] Deploy to Vercel for production testing (deployment in progress)
+- [ ] Deploy to Vercel for production testing (configuring GitHub integration)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
