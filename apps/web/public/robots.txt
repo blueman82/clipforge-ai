@@ -1,0 +1,38 @@
+# ClipForge AI - Robots.txt
+
+User-agent: *
+Allow: /
+
+# Important pages for SEO
+Allow: /
+Allow: /features
+Allow: /pricing
+Allow: /how-it-works
+Allow: /templates
+Allow: /blog
+Allow: /affiliate
+Allow: /about
+Allow: /contact
+Allow: /faq
+
+# Disallow private/admin areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /auth/
+
+# Disallow non-public pages
+Disallow: /onboarding
+Disallow: /settings
+Disallow: /billing
+
+# Legal pages (allow for compliance)
+Allow: /privacy
+Allow: /terms
+Allow: /cookies
+
+# Sitemap location
+Sitemap: https://clipforge-ai.com/sitemap.xml
+
+# Crawl-delay to be respectful
+Crawl-delay: 1
