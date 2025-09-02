@@ -81,8 +81,6 @@ const scriptGenerationWorker = new Worker(
   {
     connection: redis,
     concurrency: 3,
-    removeOnComplete: 5,
-    removeOnFail: 5,
   }
 )
 
