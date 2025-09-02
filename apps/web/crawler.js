@@ -105,7 +105,7 @@ async function findAllRoutes() {
 }
 
 async function crawlWebsite() {
-  const baseUrl = 'http://localhost:3001';
+  const baseUrl = 'http://localhost:3000';
   
   console.log('🕷️  Starting website crawler...\n');
   
