@@ -55,9 +55,9 @@
 - [ ] Configure environment variables in Vercel (Stripe, OAuth, NextAuth secrets)
   - [x] Stripe publishable key obtained (pk_live_51S2r9HIc6G5d3BDhzDzugvm5eOCdYBx8vzBpMkTfzswyljxmLXVm8G8OzAS2iz6A4a0ouLtG1KCcUcj3UQ35OxqB00C1hCEdsW)
   - [ ] Stripe secret key needed for production deployment
-  - [ ] OAuth provider credentials (Google, GitHub) - Setup instructions provided
-  - [ ] NextAuth configuration (secret generated: K8j9mN4pQ7rS1tU6wV3xY2zA5bC8eF1gH4iJ7kL0mN3p)
-- [ ] Configure OAuth providers (Google, GitHub)
+  - [ ] OAuth provider credentials (Google, GitHub) - Setup instructions provided, user evaluating priority
+  - [x] NextAuth configuration (secret generated: K8j9mN4pQ7rS1tU6wV3xY2zA5bC8eF1gH4iJ7kL0mN3p)
+- [ ] Decision: Configure OAuth providers (Google, GitHub) vs skip for MVP focus
 - [ ] Complete Vercel environment variable setup
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
