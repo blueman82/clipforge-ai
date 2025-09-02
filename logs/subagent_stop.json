@@ -1,0 +1,10 @@
+[
+  {
+    "session_id": "be436125-c1ca-4990-b451-c08431a67a02",
+    "transcript_path": "/Users/harrison/.claude/projects/-Users-harrison-Documents-Github-clipforge-ai/be436125-c1ca-4990-b451-c08431a67a02.jsonl",
+    "cwd": "/Users/harrison/Documents/Github/clipforge-ai",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false
+  }
+]

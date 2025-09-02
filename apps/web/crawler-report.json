@@ -1,0 +1,228 @@
+{
+  "timestamp": "2025-09-02T14:13:09.504Z",
+  "baseUrl": "http://localhost:3001",
+  "summary": {
+    "total": 35,
+    "ok": 5,
+    "missing": 3,
+    "errors": 0
+  },
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "ok": true,
+      "redirected": false
+    },
+    {
+      "route": "/about",
+      "status": 404,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/admin",
+      "status": 307,
+      "ok": false,
+      "redirected": true
+    },
+    {
+      "route": "/admin/analytics",
+      "status": 307,
+      "ok": false,
+      "redirected": true
+    },
+    {
+      "route": "/admin/database",
+      "status": 307,
+      "ok": false,
+      "redirected": true
+    },
+    {
+      "route": "/admin/jobs",
+      "status": 404,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/admin/settings",
+      "status": 307,
+      "ok": false,
+      "redirected": true
+    },
+    {
+      "route": "/admin/templates",
+      "status": 307,
+      "ok": false,
+      "redirected": true
+    },
+    {
+      "route": "/admin/users",
+      "status": 307,
+      "ok": false,
+      "redirected": true
+    },
+    {
+      "route": "/affiliate",
+      "status": 200,
+      "ok": true,
+      "redirected": false
+    },
+    {
+      "route": "/api/health",
+      "status": 404,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/auth/error",
+      "status": 200,
+      "ok": true,
+      "redirected": false
+    },
+    {
+      "route": "/auth/signin",
+      "status": 200,
+      "ok": true,
+      "redirected": false
+    },
+    {
+      "route": "/auth/signout",
+      "status": 200,
+      "ok": true,
+      "redirected": false
+    },
+    {
+      "route": "/auth/signup",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/auth/verify-request",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/blog",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/contact",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/cookies",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/dashboard",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/dashboard/affiliate",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/dashboard/billing",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/dashboard/projects",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/dashboard/projects/new",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/dashboard/settings",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/faq",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/features",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/how-it-works",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/onboarding",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/pricing",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/privacy",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/robots.txt",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/templates",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    },
+    {
+      "route": "/terms",
+      "status": 500,
+      "ok": false,
+      "redirected": false
+    }
+  ],
+  "missing": [
+    "/about",
+    "/admin/jobs",
+    "/api/health"
+  ],
+  "errors": []
+}
