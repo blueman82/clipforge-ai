@@ -17,9 +17,10 @@
 - [x] Create database package with migration scripts
 - [x] Build complete dashboard with project management UI
 - [x] Add full dependency stack for production business application
+- [x] Implement rendering pipeline with BullMQ workers (script generation, TTS, orchestration)
 
 ### 🚧 In Progress
-- [ ] Implement rendering pipeline with workers
+- [ ] Set up Stripe billing integration
 
 ### 📋 Up Next
 1. Implement rendering pipeline with workers (BullMQ + FFmpeg)
