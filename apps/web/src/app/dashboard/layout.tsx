@@ -4,11 +4,7 @@ import { authOptions } from '@/lib/auth'
 import { DashboardNav } from '@/components/dashboard/nav'
 import { DashboardHeader } from '@/components/dashboard/header'
 
-export default async function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions)
 
   if (!session || !session.user) {
@@ -20,9 +16,7 @@ export default async function DashboardLayout({
       <DashboardHeader user={session.user} />
       <div className="flex">
         <DashboardNav />
-        <main className="flex-1 p-6">
-          {children}
-        </main>
+        <main className="flex-1 p-6">{children}</main>
       </div>
     </div>
   )
