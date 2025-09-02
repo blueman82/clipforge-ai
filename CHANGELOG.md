@@ -111,7 +111,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Environment variable setup in progress:
   - Stripe publishable key obtained and ready for Vercel configuration
   - Awaiting Stripe secret key for complete billing integration
-  - OAuth provider setup pending (Google, GitHub credentials needed)
+  - OAuth provider setup instructions provided (Google Cloud Console + GitHub OAuth Apps)
+  - NextAuth secret generated and ready for deployment
 
 ### In Development
 - Affiliate system UI
