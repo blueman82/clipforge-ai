@@ -128,10 +128,7 @@ export function Header() {
   );
 }
 
-const DropdownItem = React.forwardRef<
-  React.ElementRef<typeof Link>,
-  React.ComponentPropsWithoutRef<typeof Link> & { title: string; children: React.ReactNode }
->(({ className, title, children, ...props }, ref) => {
+const DropdownItem: React.FC<{ href: string; title: string; children: React.ReactNode; className?: string }> = ({ className, title, children, href, ...props }) => {
   return (
     <li>
       <Link
