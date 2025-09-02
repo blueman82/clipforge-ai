@@ -14,7 +14,7 @@ export async function GET(
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
-    const projectId = params.id
+    const { id: projectId } = await params
 
     // Verify project ownership
     const project = await prisma.project.findFirst({
