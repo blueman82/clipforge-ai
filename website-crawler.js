@@ -12,7 +12,6 @@
  */
 
 const fs = require('fs');
-const path = require('path');
 
 // Known routes from your Next.js application structure
 const EXISTING_ROUTES = [
