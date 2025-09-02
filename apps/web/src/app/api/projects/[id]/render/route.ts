@@ -195,7 +195,7 @@ export async function GET(
     }
 
     let jobStatus = null
-    if (project.jobId) {
+    if (project.jobId && queues) {
       try {
         // Try to get job status from any queue
         for (const queue of Object.values(queues)) {
