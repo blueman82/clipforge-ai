@@ -96,6 +96,10 @@
   - [x] Error handling and connection recovery
   - [x] Helper functions for progress variants and messages
   - [x] TypeScript interfaces for type safety
+- [x] **Vercel Platform-Specific Build Fix** - Resolved SWC binary conflicts (2025-09-02 23:22)
+  - [x] Removed @next/swc-darwin-arm64 from root package.json devDependencies
+  - [x] Removed all optionalDependencies SWC binaries from apps/web/package.json
+  - [x] Pushed fix in commit 193861b for Vercel deployment
 - [ ] **Custom Domain Configuration** - Set up clipforge-ai.com domain in Vercel
   - [x] Google OAuth: Client ID and Secret obtained (Step 4/4 complete)
   - [ ] Add all credentials (Google OAuth + Stripe) to Vercel environment variables
