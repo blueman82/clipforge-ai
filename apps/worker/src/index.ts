@@ -228,13 +228,15 @@ const exportWorker = new Worker('video-export', async (job: Job) => {
 
     // Parse script and regenerate video without watermark
     const script = JSON.parse(project.script || '{}')
-    const exportVideo = await videoCompositionService.composeVideo({
+    const exportVideo = await videoCompositionService.composeVideo(
       script,
-      audioData: null, // Would need to regenerate or store
-      assets: null, // Would need to regenerate or store
-      watermark: false,
-      quality,
-    })
+      null, // Would need to regenerate or store assets
+      null, // Would need to regenerate or store audioData
+      {
+        resolution: quality === '1080p' ? '1080x1920' : '720x1280',
+        quality: 'high',
+      }
+    )
 
     // Deduct credit and update project
     await prisma.$transaction([
