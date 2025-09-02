@@ -110,10 +110,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - npm incompatible with workspace:* syntax from pnpm (workspace: is pnpm-specific)
 - pnpm on Vercel encountering ERR_INVALID_THIS registry errors
 - Worker package has workspace:* reference to database package
-- TypeScript error: session.user might be undefined in dashboard layout
-- ESLint v8 deprecated, needs update to v9+
-- next.config.js has deprecated experimental.serverActions
-- Solution: Use yarn and exclude worker from workspaces for Vercel deployment
+- Solution: Use yarn, exclude worker from workspaces, removed deprecated ESLint
 
 ### Planned Features
 - Export functionality with credit system
