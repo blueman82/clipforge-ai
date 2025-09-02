@@ -1,5 +1,5 @@
 import { Queue } from 'bullmq'
-import { redis } from '@/lib/redis'
+import { getRedis } from '@/lib/redis'
 import { prisma } from '@/lib/prisma'
 import { spawn } from 'child_process'
 import path from 'path'
