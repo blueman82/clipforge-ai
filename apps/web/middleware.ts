@@ -99,7 +99,7 @@ function getClientIP(request: NextRequest): string {
     return realIP
   }
   
-  return request.ip || '127.0.0.1'
+  return '127.0.0.1'
 }
 
 export default withAuth(
