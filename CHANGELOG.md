@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
+### Deployment Preparation (2025-09-02 23:36)
+- **Fixed Vercel build path configuration**: Specified root directory for monorepo
+  - Added 'root': 'apps/web' to vercel.json to specify Next.js app location
+  - Removed 'cd apps/web' from buildCommand as Vercel handles directory navigation
+  - Added outputDirectory configuration for clarity
+  - Updated webhook function path to include apps/web prefix
+  - Fixes build error: "cd: apps/web: No such file or directory"
+
 ### Deployment Preparation (2025-09-02 23:25)
 - **Fixed husky prepare script error on Vercel**: Removed husky from production builds
   - Removed 'prepare': 'husky install' from package.json scripts
