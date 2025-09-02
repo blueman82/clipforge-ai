@@ -60,6 +60,7 @@
 - [ ] Configure OAuth providers (Google, GitHub) - Cost clarified, proceeding with setup
   - [x] Google OAuth: Client ID and Secret obtained (Step 4/4 complete)
   - [ ] Add all credentials (Google OAuth + Stripe) to Vercel environment variables
+    - [ ] Locate Google Client Secret in Google Cloud Console credentials page
 - [ ] Complete Vercel environment variable setup (NEXTAUTH_URL=https://clipforge-ai.com)
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
