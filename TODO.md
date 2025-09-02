@@ -145,6 +145,12 @@
 - [x] **Deprecated Package Removal** - Removed fluent-ffmpeg and replaced with native child_process
 - [x] **Vercel npm Configuration** - Switched from yarn to npm for better cross-platform builds
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
+- [x] **Redis Connection Fix** - Fixed ECONNREFUSED Redis errors during Vercel builds (2025-09-02 18:23)
+  - [x] Implemented lazy Redis connection initialization to prevent build-time connections
+  - [x] Added optional Redis pattern for BullMQ queues with graceful degradation
+  - [x] Updated export worker to handle null Redis connections properly
+  - [x] Added proper error responses when Redis unavailable (503 Service Unavailable)
+  - [x] All build warnings eliminated - static page generation now works without Redis errors
 
 ### 📋 Up Next
 1. Create admin dashboard basic structure
