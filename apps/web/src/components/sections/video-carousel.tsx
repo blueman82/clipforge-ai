@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Play, Volume2 } from 'lucide-react'
 import { useRef } from 'react'
 
