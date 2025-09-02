@@ -5,7 +5,6 @@ import {
   Smartphone,
   Monitor,
   Square,
-  Play,
   Wand2
 } from 'lucide-react'
 import Link from 'next/link'
@@ -95,7 +94,7 @@ export default function NewProjectPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Create New Project</h1>
           <p className="text-muted-foreground">
-            Let's create your next viral video in just a few steps.
+            Let&apos;s create your next viral video in just a few steps.
           </p>
         </div>
       </div>
