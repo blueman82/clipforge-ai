@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 
-interface DashboardHeaderProps {
+interface AdminHeaderProps {
   user: {
     id?: string
     name?: string | null
@@ -24,7 +24,7 @@ interface DashboardHeaderProps {
   }
 }
 
-export function DashboardHeader({ user }: DashboardHeaderProps) {
+export function AdminHeader({ user }: AdminHeaderProps) {
   return (
     <header className="h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center px-6">
