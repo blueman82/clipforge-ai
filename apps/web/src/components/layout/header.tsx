@@ -1,21 +1,12 @@
 'use client'
 
-import { Sparkles } from 'lucide-react'
+import { Sparkles, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
 import { cn } from '@/lib/utils'
 
 export function Header() {
