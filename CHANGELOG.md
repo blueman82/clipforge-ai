@@ -106,8 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Known Issues
 - pnpm workspace installation hangs on Apple Silicon (ARM64)
 - npm incompatible with workspace:* syntax from pnpm
-- Vercel uses pnpm 6.x by default, removed version requirement for compatibility
-- Workaround: Deploy directly to Vercel which handles pnpm properly
+- Vercel pnpm encountering npm registry ERR_INVALID_THIS errors
+- Workaround: Switched to npm with --legacy-peer-deps for Vercel deployment
 
 ### Planned Features
 - Export functionality with credit system
