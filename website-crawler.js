@@ -66,8 +66,16 @@ const BASE_URL = 'http://localhost:3001';
 
 async function checkUrl(url) {
   try {
-    const fetch = await import('node-fetch');
-    const response = await fetch.default(url);
+    // Use built-in fetch (Node.js 18+) or fallback to node-fetch
+    let fetch;
+    if (globalThis.fetch) {
+      fetch = globalThis.fetch;
+    } else {
+      const nodeFetch = await import('node-fetch');
+      fetch = nodeFetch.default;
+    }
+    
+    const response = await fetch(url);
     return {
       url,
       status: response.status,
