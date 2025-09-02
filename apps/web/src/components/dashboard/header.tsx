@@ -3,7 +3,7 @@
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { 
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -35,15 +35,13 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
           <Button asChild>
             <Link href="/dashboard/projects/new">New Project</Link>
           </Button>
-          
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src={user.image || ''} alt={user.name || ''} />
-                  <AvatarFallback>
-                    {user.name?.charAt(0)?.toUpperCase() || 'U'}
-                  </AvatarFallback>
+                  <AvatarFallback>{user.name?.charAt(0)?.toUpperCase() || 'U'}</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
@@ -52,9 +50,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
                 <div className="flex flex-col space-y-1 leading-none">
                   {user.name && <p className="font-medium">{user.name}</p>}
                   {user.email && (
-                    <p className="w-[200px] truncate text-sm text-muted-foreground">
-                      {user.email}
-                    </p>
+                    <p className="w-[200px] truncate text-sm text-muted-foreground">{user.email}</p>
                   )}
                 </div>
               </div>
