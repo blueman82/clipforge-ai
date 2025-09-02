@@ -1,27 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { Queue } from 'bullmq'
-import { Redis } from 'ioredis'
 import { z } from 'zod'
 import { prisma } from '@clipforge/database'
 import { authOptions } from '@/lib/auth'
+import { getRedis } from '@/lib/redis'
 
-// Initialize Redis connection for job queues
-const redis = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: parseInt(process.env.REDIS_PORT || '6379'),
-  password: process.env.REDIS_PASSWORD,
-  maxRetriesPerRequest: 3,
-})
-
-// Initialize job queues
-const queues = {
-  scriptGeneration: new Queue('script-generation', { connection: redis }),
-  ttsGeneration: new Queue('tts-generation', { connection: redis }),
-  assetSelection: new Queue('asset-selection', { connection: redis }),
-  videoComposition: new Queue('video-composition', { connection: redis }),
-  videoExport: new Queue('video-export', { connection: redis }),
+// Initialize job queues conditionally
+function createQueues() {
+  const redis = getRedis()
+  if (!redis) return null
+  
+  return {
+    scriptGeneration: new Queue('script-generation', { connection: redis }),
+    ttsGeneration: new Queue('tts-generation', { connection: redis }),
+    assetSelection: new Queue('asset-selection', { connection: redis }),
+    videoComposition: new Queue('video-composition', { connection: redis }),
+    videoExport: new Queue('video-export', { connection: redis }),
+  }
 }
+
+const queues = createQueues()
 
 const renderSchema = z.object({
   quality: z.enum(['540p', '1080p', '4K']).optional().default('540p'),
