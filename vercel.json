@@ -1,11 +1,4 @@
 {
-  "buildCommand": "cd apps/web && npm run build",
-  "installCommand": "cd apps/web && npm install",
-  "framework": "nextjs",
-  "outputDirectory": "apps/web/.next",
-  "functions": {
-    "apps/web/src/app/api/stripe/webhook/route.ts": {
-      "maxDuration": 30
-    }
-  }
+  "installCommand": "npm install",
+  "buildCommand": "npm run build"
 }
