@@ -1,6 +1,6 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import type { NextAuthOptions } from 'next-auth'
-import EmailProvider from 'next-auth/providers/email'
+import { EmailProvider } from 'next-auth/providers/email'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 
@@ -33,13 +33,13 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token, user }) {
       if (session.user) {
         session.user.id = user?.id || token?.sub || ''
-        session.user.role = (user as any)?.role || 'user'
+        session.user.role = (user as { role?: string })?.role || 'user'
       }
       return session
     },
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as any)?.role || 'user'
+        token.role = (user as { role?: string })?.role || 'user'
       }
       return token
     },

@@ -16,6 +16,14 @@ import {
 } from '@/components/ui/navigation-menu'
 import { cn } from '@/lib/utils'
 
+interface ListItemProps {
+  className?: string
+  title: string
+  children: React.ReactNode
+  href: string
+  [key: string]: unknown
+}
+
 export function Header() {
   const { data: session } = useSession()
 
@@ -116,7 +124,7 @@ export function Header() {
   )
 }
 
-const ListItem = ({ className, title, children, href, ...props }: any) => {
+const ListItem = ({ className, title, children, href, ...props }: ListItemProps) => {
   return (
     <li>
       <NavigationMenuLink asChild>
