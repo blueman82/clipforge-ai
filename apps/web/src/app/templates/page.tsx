@@ -142,7 +142,7 @@ export default function TemplatesPage() {
       <div className="mb-16">
         <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Popular Templates</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {templates.filter(t => t.popular).map((template) => (
+          {filteredTemplates.filter(t => t.popular).map((template) => (
             <div key={template.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="aspect-video bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative">
                 <div className="text-center">
