@@ -64,11 +64,11 @@ epics:
   - id: E07
     name: "Rendering Pipeline & Workers"
     status: in_progress
-    completion: 40
-    tasks_completed: [T060, T063, T064]
-    tasks_in_progress: [T065]
-    tasks_pending: [T061, T062, T066, T067, T068, T069]
-    notes: "BullMQ setup + script + TTS workers complete, building asset selection next"
+    completion: 60
+    tasks_completed: [T060, T063, T064, T065]
+    tasks_in_progress: [T066]
+    tasks_pending: [T061, T062, T067, T068, T069]
+    notes: "BullMQ setup + script + TTS + asset selection workers complete, building video composition next"
 
   - id: E08
     name: "Storage & CDN"
