@@ -1,1 +1,1 @@
-export { default as Footer } from './layout/footer'
+export { Footer } from './layout/footer'
