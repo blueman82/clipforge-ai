@@ -1,6 +1,5 @@
 'use client'
 
-import { User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -15,7 +14,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Sparkles, LogOut, Settings, User as UserIcon } from 'lucide-react'
 
 interface DashboardHeaderProps {
-  user: User
+  user: {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+  }
 }
 
 export function DashboardHeader({ user }: DashboardHeaderProps) {
