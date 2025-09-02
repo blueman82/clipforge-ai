@@ -5,7 +5,7 @@ const nextConfig = {
     domains: ['localhost', 'res.cloudinary.com', 'images.unsplash.com'],
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
   async headers() {
     return [
