@@ -70,6 +70,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Webhook handler for payment processing and credit allocation
   - Support for one-time purchases and recurring subscriptions
   - Automatic credit ledger tracking for all transactions
+- Database schema enhancements:
+  - Added subscription status and pricing fields to User model
+  - Formatted and validated Prisma schema structure
+  - Enhanced billing integration compatibility
 
 ### In Development
 - Affiliate system UI
