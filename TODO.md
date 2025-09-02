@@ -29,8 +29,9 @@
 - [x] Push complete codebase to GitHub for deployment
 
 ### 🚧 In Progress
-- [ ] Deploy to Vercel for production testing (main branch ready)
-- [ ] Set up cloud database and Redis for production
+- [ ] Deploy to Vercel for production testing (configuring environment variables)
+- [ ] Set up cloud database (need PostgreSQL connection string)
+- [ ] Add production environment variables to Vercel
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
 ### 📋 Up Next
