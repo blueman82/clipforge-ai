@@ -117,7 +117,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - User proceeding with OAuth setup for better user experience
   - Google OAuth setup complete: Client ID and Secret obtained for clipforge-ai.com domain
   - Custom domain acquired: clipforge-ai.com (will need Vercel domain configuration)
-  - Ready to configure Google OAuth environment variables in Vercel dashboard
+  - All required credentials obtained: Google OAuth + Stripe keys ready for Vercel configuration
+  - Complete environment variable checklist provided for Vercel deployment
 
 ### In Development
 - Affiliate system UI
