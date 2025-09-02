@@ -106,8 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Known Issues
 - pnpm workspace installation hangs on Apple Silicon (ARM64)
 - npm incompatible with workspace:* syntax from pnpm
-- Vercel DATABASE_URL must be plain text value, not @secret-name reference
-- Vercel DATABASE_URL special characters must be URL-encoded if present
+- Vercel uses pnpm 6.x by default, removed version requirement for compatibility
 - Workaround: Deploy directly to Vercel which handles pnpm properly
 
 ### Planned Features
