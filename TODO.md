@@ -43,8 +43,9 @@
 - [x] Fix missing module errors (created theme-toggle, analytics, database/index.ts)
 - [x] Fix TypeScript error in dashboard layout (added null check for session.user)
 - [x] Remove deprecated next.config.js experimental.serverActions
-- [ ] Update ESLint to v9+ (currently using deprecated v8)
-- [ ] Deploy to Vercel for production testing (addressing build errors)
+- [x] Fix User type error in dashboard header (made interface match session.user)
+- [x] Remove deprecated ESLint v8 from dependencies (eliminated warnings)
+- [ ] Deploy to Vercel for production testing (TypeScript errors fixed)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
