@@ -30,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Replaced deprecated fluent-ffmpeg with native child_process spawn
   - Eliminates Vercel build warning about unsupported package
   - Consistent FFmpeg handling across all workers
+- **Vercel Build Configuration**: Switched to npm for better cross-platform support
+  - Changed Vercel configuration from yarn to npm commands
+  - Resolves platform-specific SWC binary installation issues
+  - npm handles optionalDependencies better for cross-platform builds
 
 ### Bug Fixes (2025-09-02)
 - **Navigation Menu Hydration Fix**: Fixed nested anchor tag hydration errors in navigation menu
