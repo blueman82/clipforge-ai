@@ -58,7 +58,7 @@
   - [ ] OAuth provider credentials (Google, GitHub) - Setup instructions provided, confirmed FREE (100k requests/month)
   - [x] NextAuth configuration (secret generated: K8j9mN4pQ7rS1tU6wV3xY2zA5bC8eF1gH4iJ7kL0mN3p)
 - [ ] Configure OAuth providers (Google, GitHub) - Cost clarified, proceeding with setup
-  - [ ] Google OAuth: User in Google Cloud Console OAuth consent screen setup (Step 1/4)
+  - [ ] Google OAuth: User in Google Cloud Console OAuth consent screen setup (Step 2/4 - scopes configured)
 - [ ] Complete Vercel environment variable setup
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
