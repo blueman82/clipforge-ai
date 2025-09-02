@@ -158,7 +158,7 @@ export async function POST(
 // Get rendering status
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -166,9 +166,11 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const { id } = await params
+
     const project = await prisma.project.findUnique({
       where: {
-        id: params.id,
+        id,
         userId: session.user.id,
         deletedAt: null,
       },
