@@ -125,7 +125,7 @@ export default async function AdminJobsPage() {
 
   return (
     <div className="min-h-screen">
-      <AdminHeader />
+      <AdminHeader user={session.user} />
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
