@@ -1,14 +1,17 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Suspense } from 'react'
 
-import { AuthErrorClient } from '@/components/auth/auth-error-client'
+export const metadata: Metadata = {
+  title: 'Authentication Error - ClipForge AI',
+  description: 'An error occurred during authentication',
+}
 
-function AuthError() {
-  const searchParams = useSearchParams()
-  const error = searchParams.get('error')
-
-  const getErrorMessage = (error: string | null) => {
+export default function AuthErrorPage({
+  searchParams,
+}: {
+  searchParams: { error?: string }
+}) {
+  const getErrorMessage = (error: string | undefined) => {
     switch (error) {
       case 'Configuration':
         return 'There is a problem with the server configuration.'
@@ -29,7 +32,7 @@ function AuthError() {
             Authentication Error
           </h1>
           <p className="text-sm text-muted-foreground">
-            {getErrorMessage(error)}
+            {getErrorMessage(searchParams.error)}
           </p>
         </div>
         <div className="text-center space-y-2">
@@ -49,18 +52,5 @@ function AuthError() {
         </div>
       </div>
     </div>
-  )
-}
-
-export const metadata: Metadata = {
-  title: 'Authentication Error - ClipForge AI',
-  description: 'An error occurred during authentication',
-}
-
-export default function AuthErrorPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <AuthError />
-    </Suspense>
   )
 }
