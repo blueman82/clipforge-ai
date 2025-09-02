@@ -156,6 +156,8 @@ export default function AffiliatePage() {
           </p>
         </div>
       </div>
-    </div>
+      </div>
+      <Footer />
+    </>
   )
 }
