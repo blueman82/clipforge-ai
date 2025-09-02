@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(USER)
+  
+  // Profile fields
+  niche         String?
+  language      String?   @default("en")
+  voicePrefs    Json?
+  
+  // Billing
+  stripeCustomerId       String?   @unique
+  stripeSubscriptionId   String?   @unique
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
+  
+  // Credits system
+  credits       Int       @default(3)
+  
+  // Affiliate system
+  referralCode  String?   @unique
+  referredById  String?
+  referredBy    User?     @relation("UserReferrals", fields: [referredById], references: [id])
+  referrals     User[]    @relation("UserReferrals")
+  
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  projects      Project[]
+  credits_ledger CreditLedger[]
+  affiliate_earnings AffiliateEarning[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  title       String
+  description String?
+  status      ProjectStatus @default(DRAFT)
+  template    Json?
+  script      String?
+  voiceSettings Json?
+  
+  // Media
+  previewUrl  String?
+  exportUrl   String?
+  thumbnailUrl String?
+  
+  // Processing
+  jobId       String?
+  progress    Int           @default(0)
+  
+  // Owner
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  deletedAt   DateTime?
+
+  @@map("projects")
+}
+
+model Template {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  aspectRatio String   // "9:16", "16:9", "1:1"
+  config      Json     // Template configuration
+  isActive    Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("templates")
+}
+
+model CreditLedger {
+  id          String      @id @default(cuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  amount      Int         // Positive for credit, negative for debit
+  type        CreditType
+  description String?
+  reference   String?     // Project ID, subscription ID, etc.
+  
+  createdAt   DateTime    @default(now())
+
+  @@map("credit_ledger")
+}
+
+model AffiliateEarning {
+  id              String   @id @default(cuid())
+  affiliateId     String
+  affiliate       User     @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  
+  referredUserId  String
+  amount          Decimal  @db.Decimal(10, 2)
+  status          EarningStatus @default(PENDING)
+  
+  createdAt       DateTime @default(now())
+  paidAt          DateTime?
+
+  @@map("affiliate_earnings")
+}
+
+enum Role {
+  USER
+  ADMIN
+  AFFILIATE
+}
+
+enum ProjectStatus {
+  DRAFT
+  PROCESSING
+  COMPLETED
+  FAILED
+  DELETED
+}
+
+enum CreditType {
+  PURCHASE
+  SUBSCRIPTION
+  EXPORT
+  REFUND
+  BONUS
+}
+
+enum EarningStatus {
+  PENDING
+  PAID
+  CANCELLED
+}
