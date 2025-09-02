@@ -1,47 +1,77 @@
 # ClipForge AI - TODO List
 
-## Current Sprint: Project Setup & Core Infrastructure
+## Current Sprint: Marketing Site & Core Infrastructure
 
 ### ✅ Completed
 - [x] Initialize Git repository with feature branch
 - [x] Create pnpm workspace configuration
-- [x] Set up root package.json with scripts
+- [x] Set up monorepo structure (apps/web, apps/worker, packages/ui)
+- [x] Create Next.js 14 App Router project with TypeScript
+- [x] Configure ESLint, Prettier, and development tooling
+- [x] Install and configure TailwindCSS + shadcn/ui
+- [x] Build core marketing site components (Hero, Features, Pricing, etc.)
+- [x] Create reusable UI components (Button, Card, Badge, etc.)
+- [x] Set up theme system with light/dark mode support
 
 ### 🚧 In Progress
-- [ ] Setting up monorepo structure (apps/web, apps/worker, packages/ui)
-- [ ] Creating Next.js 14 app with TypeScript
+- [ ] Finalizing marketing site components and missing UI components
+- [ ] Setting up authentication with NextAuth
 
 ### 📋 Up Next
-1. Configure ESLint, Prettier, and TypeScript strict mode
-2. Set up Husky + lint-staged for pre-commit hooks
-3. Install TailwindCSS + shadcn/ui
-4. Build marketing site components
-5. Set up authentication with NextAuth
-6. Configure Prisma and PostgreSQL
-7. Build dashboard and project management
-8. Implement rendering pipeline
-9. Set up Stripe billing
-10. Build affiliate system
-11. Configure monitoring
+1. Complete remaining UI components (missing Radix dependencies)
+2. Set up authentication with NextAuth
+3. Configure Prisma and PostgreSQL
+4. Build dashboard and project management
+5. Implement rendering pipeline with workers
+6. Set up Stripe billing integration
+7. Build affiliate system
+8. Configure monitoring and observability
 
 ## Epic Progress
 
-### E01: Project Setup & CI/CD [20% Complete]
+### E01: Project Setup & CI/CD [80% Complete]
 - T001: Initialize monorepo ✅
-- T002: Create Next.js 14 App Router project 🚧
-- T003-T009: Pending
+- T002: Create Next.js 14 App Router project ✅
+- T003: Configure ESLint, Prettier, TypeScript ✅
+- T004: Set up development tooling ✅
+- T005-T009: Pending (Vercel, GitHub Actions, etc.)
 
-### E02-E17: [0% Complete]
+### E02: Design System & Base UI [90% Complete]
+- T010: Install TailwindCSS + shadcn/ui ✅
+- T011: Theme tokens (light/dark), typography ✅
+- T012: Framer Motion scaffolding ✅
+- T013: Reusable components ✅
+- T014: Header/Nav and Footer components ✅
+
+### E03: Marketing Site v1 [85% Complete]
+- T020: Hero section ✅
+- T021: Sample video cards carousel ✅
+- T022: Social proof row ✅
+- T023: Feature grid + How-it-works ✅
+- T024: Pricing page ✅
+- T025: Affiliate landing page (pending)
+- T026: Blog (pending)
+- T027-T028: SEO and legal pages (pending)
+
+### E04-E17: [0% Complete]
 - All tasks pending
 
-## Notes
-- Using pnpm for package management
-- Monorepo structure with Turborepo
-- Next.js 14 with App Router
-- TypeScript strict mode enabled
-- PostgreSQL with Prisma ORM
-- Stripe for payments
-- BullMQ for job queues
-- FFmpeg for video rendering
+## Technical Stack Implemented
+- ✅ Next.js 14 with App Router and TypeScript
+- ✅ TailwindCSS + shadcn/ui components
+- ✅ Framer Motion animations
+- ✅ Radix UI primitives (partial)
+- ✅ Theme system with next-themes
+- ✅ Monorepo with pnpm workspaces
+- ⏳ Turborepo build orchestration
+- ⏳ NextAuth authentication
+- ⏳ Prisma ORM + PostgreSQL
+- ⏳ Stripe billing integration
+- ⏳ BullMQ job queues
+- ⏳ FFmpeg video processing
 
-Last Updated: 2025-09-01
+## Current Issues
+- Some Radix UI dependencies need installation (@radix-ui/react-badge doesn't exist)
+- Need to install missing dependencies and run quality checks
+
+Last Updated: 2025-09-02
