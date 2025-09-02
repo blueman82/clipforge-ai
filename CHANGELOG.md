@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
-### Deployment Preparation (2025-09-02 23:20)
-- **Fixed npm install on Vercel**: Removed SWC optionalDependencies causing platform conflicts
-  - Removed all @next/swc-* binaries from optionalDependencies in package.json
+### Deployment Preparation (2025-09-02 23:22)
+- **Fixed npm install on Vercel**: Removed ALL SWC Darwin binaries causing platform conflicts
+  - Removed @next/swc-darwin-arm64 from root package.json devDependencies
+  - Removed all @next/swc-* binaries from apps/web optionalDependencies
   - Next.js automatically handles platform-specific SWC binary installation
   - Fixes EBADPLATFORM error: "Unsupported platform for @next/swc-darwin-arm64"
   - Allows npm to correctly install Linux x64 binaries on Vercel build environment
+  - Successfully pushed fix in commit 193861b
 
 ### Deployment Preparation (2025-09-02 23:00)
 - **Security Improvements**: Removed hardcoded API keys for production deployment
