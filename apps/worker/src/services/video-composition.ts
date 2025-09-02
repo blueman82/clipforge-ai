@@ -39,12 +39,7 @@ export class VideoCompositionService {
     audioData: AudioData,
     options: CompositionOptions = {}
   ): Promise<VideoCompositionData> {
-    const {
-      resolution = '1080x1920',
-      format = 'mp4',
-      framerate = 30,
-      quality = 'medium',
-    } = options
+    const { resolution = '1080x1920', format = 'mp4', framerate = 30, quality = 'medium' } = options
 
     const outputFilename = `video-${uuidv4()}.${format}`
     const outputPath = path.join(this.outputDir, outputFilename)
@@ -91,7 +86,7 @@ export class VideoCompositionService {
     const segments: string[] = []
 
     for (const scene of script.scenes) {
-      const sceneAssets = assetData.scenes.find(s => s.sceneId === scene.id)
+      const sceneAssets = assetData.scenes.find((s) => s.sceneId === scene.id)
       if (!sceneAssets) {
         throw new Error(`No assets found for scene ${scene.id}`)
       }
@@ -122,28 +117,21 @@ export class VideoCompositionService {
 
         if (asset.type === 'image') {
           // For images, create a video with the specified duration
-          command = command
-            .inputOptions([
-              '-loop 1',
-              '-t', scene.duration.toString(),
-            ])
+          command = command.inputOptions(['-loop 1', '-t', scene.duration.toString()])
         } else if (asset.type === 'video') {
           // For videos, trim or loop to match scene duration
-          command = command
-            .inputOptions([
-              '-ss 0',
-              '-t', scene.duration.toString(),
-            ])
+          command = command.inputOptions(['-ss 0', '-t', scene.duration.toString()])
         }
       } else {
         // Multiple assets - create a slideshow or montage
         assets.forEach((asset, index) => {
           command = command.input(asset.localPath)
-          
+
           if (asset.type === 'image') {
             command = command.inputOptions([
               '-loop 1',
-              '-t', (scene.duration / assets.length).toString(),
+              '-t',
+              (scene.duration / assets.length).toString(),
             ])
           }
         })
@@ -161,8 +149,11 @@ export class VideoCompositionService {
         .outputOptions([
           '-pix_fmt yuv420p',
           '-preset fast',
-          options.quality === 'high' ? '-crf 18' : 
-          options.quality === 'medium' ? '-crf 23' : '-crf 28',
+          options.quality === 'high'
+            ? '-crf 18'
+            : options.quality === 'medium'
+              ? '-crf 23'
+              : '-crf 28',
         ])
         .output(segmentPath)
         .on('end', () => resolve(segmentPath))
@@ -190,7 +181,7 @@ export class VideoCompositionService {
     const transitionDuration = Math.min(0.5, segmentDuration * 0.1) // 0.5s max transition
 
     let filterComplex = ''
-    
+
     // Scale all inputs
     for (let i = 0; i < assets.length; i++) {
       filterComplex += `[${i}:v]scale=${width}:${height}:force_original_aspect_ratio=decrease,pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2,setsar=1[v${i}];`
@@ -202,13 +193,13 @@ export class VideoCompositionService {
     } else {
       // For more than 2 assets, chain xfade filters
       filterComplex += `[v0][v1]xfade=transition=fade:duration=${transitionDuration}:offset=${segmentDuration - transitionDuration}[x1];`
-      
+
       for (let i = 2; i < assets.length; i++) {
-        const offset = (segmentDuration * i) - transitionDuration
+        const offset = segmentDuration * i - transitionDuration
         if (i === assets.length - 1) {
-          filterComplex += `[x${i-1}][v${i}]xfade=transition=fade:duration=${transitionDuration}:offset=${offset}[v]`
+          filterComplex += `[x${i - 1}][v${i}]xfade=transition=fade:duration=${transitionDuration}:offset=${offset}[v]`
         } else {
-          filterComplex += `[x${i-1}][v${i}]xfade=transition=fade:duration=${transitionDuration}:offset=${offset}[x${i}];`
+          filterComplex += `[x${i - 1}][v${i}]xfade=transition=fade:duration=${transitionDuration}:offset=${offset}[x${i}];`
         }
       }
     }
@@ -218,7 +209,7 @@ export class VideoCompositionService {
 
   private async concatenateSegments(segmentPaths: string[]): Promise<string> {
     const concatListPath = path.join(this.tempDir, 'concat-list.txt')
-    const concatList = segmentPaths.map(p => `file '${path.resolve(p)}'`).join('\n')
+    const concatList = segmentPaths.map((p) => `file '${path.resolve(p)}'`).join('\n')
     await fs.writeFile(concatListPath, concatList)
 
     const outputPath = path.join(this.tempDir, 'video-no-audio.mp4')
@@ -240,12 +231,12 @@ export class VideoCompositionService {
 
   private async concatenateAudioSegments(audioData: AudioData): Promise<string> {
     const concatListPath = path.join(this.tempDir, 'audio-concat-list.txt')
-    const audioPaths = audioData.segments.map(segment => {
+    const audioPaths = audioData.segments.map((segment) => {
       // Extract file path from audioUrl (assuming it's a local file path)
       return segment.audioUrl
     })
-    
-    const concatList = audioPaths.map(p => `file '${path.resolve(p)}'`).join('\n')
+
+    const concatList = audioPaths.map((p) => `file '${path.resolve(p)}'`).join('\n')
     await fs.writeFile(concatListPath, concatList)
 
     const outputPath = path.join(this.tempDir, 'concatenated-audio.mp3')
@@ -303,7 +294,7 @@ export class VideoCompositionService {
           return
         }
 
-        const videoStream = metadata.streams.find(stream => stream.codec_type === 'video')
+        const videoStream = metadata.streams.find((stream) => stream.codec_type === 'video')
         if (!videoStream) {
           reject(new Error('No video stream found'))
           return
