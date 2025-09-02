@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Check, X } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
-import { Check, X } from 'lucide-react'
-import Link from 'next/link'
+
 
 const plans = [
   {

@@ -1,8 +1,3 @@
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { 
   Video, 
   Plus, 
@@ -12,6 +7,12 @@ import {
   Clock
 } from 'lucide-react'
 import Link from 'next/link'
+import { getServerSession } from 'next-auth'
+
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { authOptions } from '@/lib/auth'
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)

@@ -1,9 +1,11 @@
 'use client'
 
+import { Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
-import { Button } from '@/components/ui/button'
+
 import { ThemeToggle } from '@/components/theme-toggle'
+import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,7 +15,6 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 import { cn } from '@/lib/utils'
-import { Sparkles } from 'lucide-react'
 
 export function Header() {
   const { data: session } = useSession()

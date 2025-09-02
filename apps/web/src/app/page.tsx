@@ -1,12 +1,12 @@
-import { Hero } from '@/components/sections/hero'
-import { VideoCarousel } from '@/components/sections/video-carousel'
-import { SocialProof } from '@/components/sections/social-proof'
+import { Footer } from '@/components/layout/footer'
+import { Header } from '@/components/layout/header'
+import { CTA } from '@/components/sections/cta'
 import { Features } from '@/components/sections/features'
+import { Hero } from '@/components/sections/hero'
 import { HowItWorks } from '@/components/sections/how-it-works'
 import { Pricing } from '@/components/sections/pricing'
-import { CTA } from '@/components/sections/cta'
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
+import { SocialProof } from '@/components/sections/social-proof'
+import { VideoCarousel } from '@/components/sections/video-carousel'
 
 export default function HomePage() {
   return (

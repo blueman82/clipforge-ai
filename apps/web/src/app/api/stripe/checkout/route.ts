@@ -1,8 +1,9 @@
+import { prisma } from '@clipforge/database'
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
-import { stripe } from '@/lib/stripe'
-import { prisma } from '@clipforge/database'
+
 import { authOptions } from '@/lib/auth'
+import { stripe } from '@/lib/stripe'
 
 export async function POST(req: NextRequest) {
   try {

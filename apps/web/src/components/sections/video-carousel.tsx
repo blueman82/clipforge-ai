@@ -1,9 +1,11 @@
 'use client'
 
-import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Card } from '@/components/ui/card'
 import { Play, Volume2 } from 'lucide-react'
+import { useRef } from 'react'
+
+import { Card } from '@/components/ui/card'
+
 
 const sampleVideos = [
   {

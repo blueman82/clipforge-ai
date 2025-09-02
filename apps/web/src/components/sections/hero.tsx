@@ -1,10 +1,11 @@
 'use client'
 
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Play, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { ArrowRight, Play, Sparkles } from 'lucide-react'
+import Link from 'next/link'
+
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
 export function Hero() {
   return (
