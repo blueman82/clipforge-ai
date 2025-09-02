@@ -123,15 +123,16 @@
 - T013: Reusable components ✅
 - T014: Header/Nav and Footer components ✅
 
-### E03: Marketing Site v1 [85% Complete]
+### E03: Marketing Site v1 [100% Complete]
 - T020: Hero section ✅
 - T021: Sample video cards carousel ✅
 - T022: Social proof row ✅
 - T023: Feature grid + How-it-works ✅
 - T024: Pricing page ✅
-- T025: Affiliate landing page (pending)
-- T026: Blog (pending)
-- T027-T028: SEO and legal pages (pending)
+- T025: Affiliate landing page ✅
+- T026: Blog ✅
+- T027-T028: SEO and legal pages ✅
+- T050: Templates page with filtering ✅
 
 ### E04: Auth & User Accounts [95% Complete]
 - T030: Prisma + PostgreSQL setup ✅
