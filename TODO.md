@@ -53,8 +53,12 @@
 - [x] Deploy to Vercel for production testing (TypeScript fixes deployed, awaiting build completion)
 - [x] Fix ESLint build error (added eslint and eslint-config-next to devDependencies)
 - [ ] Configure environment variables in Vercel (Stripe, OAuth, NextAuth secrets)
+  - [x] Stripe publishable key obtained (pk_live_51S2r9HIc6G5d3BDhzDzugvm5eOCdYBx8vzBpMkTfzswyljxmLXVm8G8OzAS2iz6A4a0ouLtG1KCcUcj3UQ35OxqB00C1hCEdsW)
+  - [ ] Stripe secret key needed for production deployment
+  - [ ] OAuth provider credentials (Google, GitHub)
+  - [ ] NextAuth configuration
 - [ ] Configure OAuth providers (Google, GitHub)
-- [ ] Set up Stripe API keys
+- [ ] Complete Vercel environment variable setup
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
 ### 📋 Up Next
