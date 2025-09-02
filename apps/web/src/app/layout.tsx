@@ -10,6 +10,7 @@ import { Toaster } from '@/components/ui/toaster'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://clipforge-ai.vercel.app'),
   title: 'ClipForge AI - Create Viral Videos in Minutes',
   description:
     'AI-powered faceless video generation platform. Transform your ideas into engaging videos with automated scripts, voiceovers, and editing.',
