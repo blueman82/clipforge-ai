@@ -124,10 +124,11 @@ epics:
   - id: E15
     name: "Performance, SEO & A11y"
     status: not_started
-    completion: 50
+    completion: 60
     tasks_partially_done: [T140, T141]
+    tasks_completed: [T145]
     tasks_pending: [T142]
-    notes: "Next.js optimization in place, accessibility audit needed"
+    notes: "Next.js optimization in place, website crawler tool created for route analysis, accessibility audit needed"
 
   - id: E16
     name: "Testing"
