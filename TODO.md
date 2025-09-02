@@ -24,6 +24,7 @@
 - [x] **Script Generation Worker** - First stage of rendering pipeline with scene processing
 - [x] **TTS Generation Worker** - Text-to-speech conversion with ElevenLabs, Azure Speech, and mock providers
 - [x] **Asset Selection Worker** - Multi-provider stock asset selection with Pexels, Unsplash, and keyword extraction
+- [x] **Video Composition Worker** - FFmpeg-based video composition with multiple quality settings and watermarking
 - [x] Fix integration issues and type errors in video rendering pipeline
 - [x] Create comprehensive environment configuration (.env.example) with all required variables
 - [x] Set up Stripe billing integration library with pricing configuration
