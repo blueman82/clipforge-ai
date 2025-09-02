@@ -115,8 +115,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - NextAuth secret generated and ready for deployment
   - OAuth cost concerns addressed - Google/GitHub OAuth confirmed FREE (100k requests/month)
   - User proceeding with OAuth setup for better user experience
-  - Google OAuth setup nearly complete: Client ID obtained, getting Client Secret - Step 4/4
+  - Google OAuth setup complete: Client ID and Secret obtained for clipforge-ai.com domain
   - Custom domain acquired: clipforge-ai.com (will need Vercel domain configuration)
+  - Ready to configure Google OAuth environment variables in Vercel dashboard
 
 ### In Development
 - Affiliate system UI
