@@ -38,7 +38,8 @@
 - [x] Simplify vercel.json for Root Directory UI setting
 - [x] Remove workspace references from apps/web package.json
 - [x] Force pnpm instead of npm in vercel.json (workspace: protocol is pnpm-specific)
-- [ ] Deploy to Vercel for production testing (switched back to pnpm)
+- [x] Switch to yarn for Vercel deployment (pnpm registry errors, yarn handles workspaces)
+- [ ] Deploy to Vercel for production testing (using yarn)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
