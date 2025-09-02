@@ -19,3 +19,8 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+
+# Lockfiles - let Vercel generate platform-appropriate versions
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
