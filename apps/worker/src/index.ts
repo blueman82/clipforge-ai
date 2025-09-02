@@ -172,13 +172,15 @@ const compositionWorker = new Worker('video-composition', async (job: Job) => {
     })
 
     // Compose video with watermark (preview)
-    const previewVideo = await videoCompositionService.composeVideo({
+    const previewVideo = await videoCompositionService.composeVideo(
       script,
-      audioData,
       assets,
-      watermark: true,
-      quality: '540p',
-    })
+      audioData,
+      {
+        resolution: '720x1280',
+        quality: 'low',
+      }
+    )
 
     // Update project with preview URL
     await prisma.project.update({
