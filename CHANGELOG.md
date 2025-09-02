@@ -115,6 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - NextAuth secret generated and ready for deployment
   - OAuth cost concerns addressed - Google/GitHub OAuth confirmed FREE (100k requests/month)
   - User proceeding with OAuth setup for better user experience
+  - Google OAuth setup in progress: User completing consent screen configuration (Step 1/4)
 
 ### In Development
 - Affiliate system UI
