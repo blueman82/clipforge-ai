@@ -9,7 +9,6 @@ import {
   Eye
 } from 'lucide-react'
 import Link from 'next/link'
-import { getServerSession } from 'next-auth'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -21,7 +20,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { authOptions } from '@/lib/auth'
 
 // Mock data - would come from database
 const projects = [
