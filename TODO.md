@@ -101,11 +101,11 @@
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
 ### 📋 Up Next
-1. Build affiliate system
-2. Configure monitoring and observability
-3. Create additional marketing pages (affiliate, blog)
-4. Add SEO and legal pages
-5. Deploy to production
+1. Create admin dashboard basic structure
+2. Implement template management system for admins
+3. Build email notification system
+4. Create user onboarding flow
+5. Configure monitoring and observability
 
 ## Epic Progress
 
