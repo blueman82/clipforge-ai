@@ -1,7 +1,7 @@
 import { Queue } from 'bullmq'
 import { redis } from '@/lib/redis'
 import { prisma } from '@/lib/prisma'
-import ffmpeg from 'fluent-ffmpeg'
+import { spawn } from 'child_process'
 import path from 'path'
 import fs from 'fs'
 import { uploadToS3 } from '@/lib/storage'
@@ -39,9 +39,13 @@ export const exportQueue = new Queue<ExportJobData, ExportJobResult>('export', {
 
 export class ExportWorker {
   private tempDir: string
+  private ffmpegPath: string
+  private ffprobePath: string
 
   constructor() {
     this.tempDir = process.env.TEMP_DIR || '/tmp/clipforge'
+    this.ffmpegPath = process.env.FFMPEG_PATH || 'ffmpeg'
+    this.ffprobePath = process.env.FFPROBE_PATH || 'ffprobe'
     this.ensureTempDir()
   }
 
@@ -51,305 +55,245 @@ export class ExportWorker {
     }
   }
 
-  async processExport(data: ExportJobData): Promise<ExportJobResult> {
+  async processExport(job: ExportJobData): Promise<ExportJobResult> {
+    const { projectId, userId, quality, removeWatermark, format } = job
+
     try {
-      // Get project data
-      const project = await prisma.project.findFirst({
-        where: {
-          id: data.projectId,
-          userId: data.userId,
-        },
+      // Get project from database
+      const project = await prisma.project.findUnique({
+        where: { id: projectId },
+        include: { user: true },
       })
 
-      if (!project || !project.previewUrl) {
-        throw new Error('Project not found or preview not available')
+      if (!project) {
+        throw new Error('Project not found')
       }
 
-      // Update project status
-      await prisma.project.update({
-        where: { id: data.projectId },
-        data: { 
-          status: 'PROCESSING',
-          progress: 10,
-        },
-      })
+      if (project.userId !== userId) {
+        throw new Error('Unauthorized')
+      }
 
-      // Download the preview video
-      const inputPath = await this.downloadPreview(project.previewUrl)
-      
-      // Generate output filename
-      const outputFilename = `${project.id}-export-${data.quality}.${data.format}`
-      const outputPath = path.join(this.tempDir, outputFilename)
+      // Check if user can remove watermark
+      if (removeWatermark) {
+        const canRemoveWatermark = await this.checkWatermarkRemoval(userId)
+        if (!canRemoveWatermark) {
+          throw new Error('Insufficient credits or subscription for watermark removal')
+        }
+      }
+
+      // Get the preview/draft video path
+      const previewPath = project.previewUrl
+      if (!previewPath || !fs.existsSync(previewPath)) {
+        throw new Error('Preview video not found. Please render the project first.')
+      }
+
+      // Create export filename
+      const timestamp = Date.now()
+      const exportFilename = `export-${projectId}-${quality}-${timestamp}.${format}`
+      const outputPath = path.join(this.tempDir, exportFilename)
 
       // Process video with FFmpeg
-      const processedVideo = await this.processVideo({
-        inputPath,
-        outputPath,
-        quality: data.quality,
-        removeWatermark: data.removeWatermark,
-        projectId: data.projectId,
-      })
+      await this.processVideo(previewPath, outputPath, quality, removeWatermark, format)
 
       // Generate thumbnail
-      const thumbnailPath = await this.generateThumbnail(processedVideo.outputPath, data.projectId)
+      const thumbnailFilename = `thumbnail-${projectId}-${timestamp}.jpg`
+      const thumbnailPath = path.join(this.tempDir, thumbnailFilename)
+      await this.generateThumbnail(outputPath, thumbnailPath)
 
       // Upload to S3
-      const [exportUrl, thumbnailUrl] = await Promise.all([
-        uploadToS3(processedVideo.outputPath, `exports/${outputFilename}`),
-        uploadToS3(thumbnailPath, `thumbnails/${data.projectId}-export.jpg`),
-      ])
+      const exportUrl = await uploadToS3(outputPath, `exports/${exportFilename}`)
+      const thumbnailUrl = await uploadToS3(thumbnailPath, `thumbnails/${thumbnailFilename}`)
 
-      // Update project with export data
+      // Get video metadata
+      const metadata = await this.getVideoMetadata(outputPath)
+
+      // Update project with export URL
       await prisma.project.update({
-        where: { id: data.projectId },
+        where: { id: projectId },
         data: {
-          status: 'COMPLETED',
-          progress: 100,
           exportUrl,
           thumbnailUrl,
+          status: 'COMPLETED',
+          progress: 100,
         },
       })
 
+      // Deduct credits if watermark was removed
+      if (removeWatermark) {
+        await this.deductCredits(userId, quality)
+      }
+
       // Clean up temp files
-      this.cleanupTempFiles([inputPath, processedVideo.outputPath, thumbnailPath])
+      fs.unlinkSync(outputPath)
+      fs.unlinkSync(thumbnailPath)
 
       return {
         success: true,
         exportUrl,
         thumbnailUrl,
-        duration: processedVideo.duration,
-        fileSize: processedVideo.fileSize,
+        duration: metadata.duration,
+        fileSize: metadata.fileSize,
       }
     } catch (error) {
-      console.error('Export processing error:', error)
-      
-      // Update project with error status
-      await prisma.project.update({
-        where: { id: data.projectId },
-        data: {
-          status: 'FAILED',
-          progress: 0,
-        },
-      })
-
+      console.error('Export failed:', error)
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : 'Export failed',
       }
     }
   }
 
-  private async downloadPreview(previewUrl: string): Promise<string> {
-    // In a real implementation, you'd download the file from S3
-    // For now, assume it's already available locally
-    return previewUrl
+  private async processVideo(
+    inputPath: string,
+    outputPath: string,
+    quality: '1080p' | '4K',
+    removeWatermark: boolean,
+    format: 'mp4' | 'mov'
+  ): Promise<void> {
+    const qualitySettings = {
+      '1080p': {
+        width: 1920,
+        height: 1080,
+        bitrate: '8000k',
+        preset: 'slow',
+        crf: 18,
+      },
+      '4K': {
+        width: 3840,
+        height: 2160,
+        bitrate: '25000k',
+        preset: 'slow',
+        crf: 17,
+      },
+    }
+
+    const settings = qualitySettings[quality]
+    const args = [
+      '-i', inputPath,
+      '-vf', `scale=${settings.width}:${settings.height}:force_original_aspect_ratio=decrease,pad=${settings.width}:${settings.height}:(ow-iw)/2:(oh-ih)/2`,
+      '-c:v', 'libx264',
+      '-preset', settings.preset,
+      '-crf', settings.crf.toString(),
+      '-maxrate', settings.bitrate,
+      '-bufsize', (parseInt(settings.bitrate) * 2).toString(),
+      '-pix_fmt', 'yuv420p',
+      '-c:a', 'aac',
+      '-b:a', '192k',
+      '-ar', '48000',
+      '-movflags', '+faststart',
+    ]
+
+    // Add watermark if not removed
+    if (!removeWatermark) {
+      args.splice(2, 0, '-vf')
+      args.splice(3, 0, `drawtext=text='ClipForge AI':x=10:y=10:fontsize=24:fontcolor=white@0.8:box=1:boxcolor=black@0.5,${args[3]}`)
+    }
+
+    // Add format-specific settings
+    if (format === 'mov') {
+      args.push('-tag:v', 'hvc1')
+    }
+
+    args.push('-y', outputPath)
+
+    return this.runFFmpeg(args)
   }
 
-  private async processVideo(options: {
-    inputPath: string
-    outputPath: string
-    quality: '1080p' | '4K'
-    removeWatermark: boolean
-    projectId: string
-  }): Promise<{ outputPath: string; duration: number; fileSize: number }> {
-    const { inputPath, outputPath, quality, removeWatermark, projectId } = options
+  private async generateThumbnail(videoPath: string, thumbnailPath: string): Promise<void> {
+    const args = [
+      '-i', videoPath,
+      '-vf', 'thumbnail,scale=640:360',
+      '-frames:v', '1',
+      '-y', thumbnailPath,
+    ]
 
+    return this.runFFmpeg(args)
+  }
+
+  private async runFFmpeg(args: string[]): Promise<void> {
     return new Promise((resolve, reject) => {
-      let ffmpegCommand = ffmpeg(inputPath)
-        .outputOptions([
-          '-c:v libx264',
-          '-c:a aac',
-          '-b:a 128k',
-          '-movflags +faststart',
-        ])
+      const process = spawn(this.ffmpegPath, args)
 
-      // Set quality-specific options
-      if (quality === '4K') {
-        ffmpegCommand = ffmpegCommand
-          .size('3840x2160')
-          .videoBitrate('15000k')
-      } else {
-        ffmpegCommand = ffmpegCommand
-          .size('1920x1080')
-          .videoBitrate('8000k')
-      }
-
-      // Remove watermark if requested (and user has paid)
-      if (removeWatermark) {
-        // Add watermark removal filter
-        // This is a simplified example - real implementation would be more complex
-        ffmpegCommand = ffmpegCommand.videoFilters([
-          'scale=1920:1080:flags=lanczos',
-        ])
-      } else {
-        // Add ClipForge watermark
-        const watermarkPath = path.join(process.cwd(), 'public', 'watermark.png')
-        if (fs.existsSync(watermarkPath)) {
-          ffmpegCommand = ffmpegCommand.videoFilters([
-            `movie=${watermarkPath}[watermark]`,
-            '[in][watermark]overlay=W-w-20:H-h-20[out]',
-          ])
-        }
-      }
-
-      // Progress tracking
-      ffmpegCommand.on('progress', async (progress) => {
-        const percent = Math.round(progress.percent || 0)
-        await prisma.project.update({
-          where: { id: projectId },
-          data: { progress: Math.min(10 + (percent * 0.8), 90) },
-        })
+      let stderr = ''
+      process.stderr.on('data', (data) => {
+        stderr += data.toString()
       })
 
-      ffmpegCommand
-        .save(outputPath)
-        .on('end', () => {
-          // Get file stats
-          const stats = fs.statSync(outputPath)
-          
-          // Get video duration (simplified - would use ffprobe in real implementation)
-          ffmpeg.ffprobe(outputPath, (err, metadata) => {
-            const duration = metadata?.format?.duration || 0
-            
+      process.on('close', (code) => {
+        if (code === 0) {
+          resolve()
+        } else {
+          reject(new Error(`FFmpeg failed with code ${code}: ${stderr}`))
+        }
+      })
+
+      process.on('error', (error) => {
+        reject(error)
+      })
+    })
+  }
+
+  private async getVideoMetadata(videoPath: string): Promise<{ duration: number; fileSize: number }> {
+    return new Promise((resolve, reject) => {
+      const process = spawn(this.ffprobePath, [
+        '-v', 'quiet',
+        '-print_format', 'json',
+        '-show_format',
+        videoPath,
+      ])
+
+      let stdout = ''
+      process.stdout.on('data', (data) => {
+        stdout += data.toString()
+      })
+
+      process.on('close', (code) => {
+        if (code === 0) {
+          try {
+            const metadata = JSON.parse(stdout)
+            const stats = fs.statSync(videoPath)
             resolve({
-              outputPath,
-              duration,
+              duration: parseFloat(metadata.format?.duration || '0'),
               fileSize: stats.size,
             })
-          })
-        })
-        .on('error', (error) => {
-          console.error('FFmpeg error:', error)
-          reject(error)
-        })
-    })
-  }
-
-  private async generateThumbnail(videoPath: string, projectId: string): Promise<string> {
-    const thumbnailPath = path.join(this.tempDir, `${projectId}-thumbnail.jpg`)
-
-    return new Promise((resolve, reject) => {
-      ffmpeg(videoPath)
-        .screenshots({
-          timestamps: ['50%'],
-          filename: path.basename(thumbnailPath),
-          folder: path.dirname(thumbnailPath),
-          size: '1920x1080',
-        })
-        .on('end', () => resolve(thumbnailPath))
-        .on('error', reject)
-    })
-  }
-
-  private cleanupTempFiles(filePaths: string[]) {
-    filePaths.forEach((filePath) => {
-      try {
-        if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath)
+          } catch (error) {
+            reject(error)
+          }
+        } else {
+          reject(new Error(`ffprobe failed with code ${code}`))
         }
-      } catch (error) {
-        console.error(`Failed to cleanup temp file ${filePath}:`, error)
-      }
+      })
     })
   }
-}
 
-// Worker processor function
-export async function processExportJob(data: ExportJobData): Promise<ExportJobResult> {
-  const worker = new ExportWorker()
-  return await worker.processExport(data)
-}
-
-// Utility function to add export job to queue
-export async function addExportJob(
-  projectId: string,
-  userId: string,
-  options: {
-    quality?: '1080p' | '4K'
-    removeWatermark?: boolean
-    format?: 'mp4' | 'mov'
-  } = {}
-) {
-  const jobData: ExportJobData = {
-    projectId,
-    userId,
-    quality: options.quality || '1080p',
-    removeWatermark: options.removeWatermark || false,
-    format: options.format || 'mp4',
-  }
-
-  const job = await exportQueue.add('export', jobData, {
-    priority: options.quality === '4K' ? 5 : 10, // 4K gets lower priority
-    delay: 0,
-  })
-
-  return job
-}
-
-// Check if user can export without watermark
-export async function canRemoveWatermark(userId: string): Promise<boolean> {
-  const user = await prisma.user.findUnique({
-    where: { id: userId },
-    select: { 
-      credits: true,
-      subscriptionStatus: true,
-    },
-  })
-
-  if (!user) return false
-
-  // User needs active subscription or credits
-  return (
-    user.subscriptionStatus === 'active' ||
-    user.credits > 0
-  )
-}
-
-// Deduct credits for export
-export async function deductExportCredits(userId: string, quality: '1080p' | '4K'): Promise<boolean> {
-  const creditsRequired = quality === '4K' ? 2 : 1
-  
-  try {
-    const result = await prisma.$transaction(async (tx) => {
-      const user = await tx.user.findUnique({
-        where: { id: userId },
-        select: { credits: true, subscriptionStatus: true },
-      })
-
-      if (!user) throw new Error('User not found')
-
-      // Skip credit deduction if user has active subscription
-      if (user.subscriptionStatus === 'active') {
-        return true
-      }
-
-      // Check if user has enough credits
-      if (user.credits < creditsRequired) {
-        throw new Error('Insufficient credits')
-      }
-
-      // Deduct credits
-      await tx.user.update({
-        where: { id: userId },
-        data: { credits: { decrement: creditsRequired } },
-      })
-
-      // Log credit usage
-      await tx.creditLedger.create({
-        data: {
-          userId,
-          amount: -creditsRequired,
-          type: 'EXPORT',
-          description: `Export ${quality} video`,
-        },
-      })
-
-      return true
+  private async checkWatermarkRemoval(userId: string): Promise<boolean> {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { credits: true, subscriptionStatus: true },
     })
 
-    return result
-  } catch (error) {
-    console.error('Failed to deduct export credits:', error)
+    if (!user) return false
+
+    // Check if user has active subscription or enough credits
+    if (user.subscriptionStatus === 'active') return true
+    if ((user.credits || 0) >= 10) return true
+
     return false
   }
+
+  private async deductCredits(userId: string, quality: '1080p' | '4K'): Promise<void> {
+    const creditsToDeduct = quality === '4K' ? 20 : 10
+
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        credits: {
+          decrement: creditsToDeduct,
+        },
+      },
+    })
+  }
 }
+
+// Create and export the worker instance
+export const exportWorker = new ExportWorker()
