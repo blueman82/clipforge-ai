@@ -93,6 +93,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### In Development
 - Affiliate system UI
 - Admin dashboard
+- Dependency installation fixes for Apple Silicon M1/M2 ARM64 architecture
+
+### Known Issues
+- pnpm workspace installation hangs on Apple Silicon (ARM64)
+- npm incompatible with workspace:* syntax from pnpm
+- Workaround: Deploy directly to Vercel which handles pnpm properly
 
 ### Planned Features
 - Export functionality with credit system
