@@ -255,7 +255,7 @@ const exportWorker = new Worker('video-export', async (job: Job) => {
       }),
       prisma.project.update({
         where: { id: projectId },
-        data: { exportUrl: exportVideo.url },
+        data: { exportUrl: exportVideo.outputPath },
       }),
     ])
 
