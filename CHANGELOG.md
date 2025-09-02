@@ -30,13 +30,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Theme provider with light/dark mode support
 - Framer Motion integration for micro-animations
 - Project documentation (TODO.md, CHANGELOG.md)
+- NextAuth authentication system with Google, GitHub, and Email providers
+- Complete Prisma database schema with user management, projects, billing, and affiliate models
+- Database package with migration and seed scripts
 
 ### In Development
-- NextAuth authentication system
-- Prisma ORM with PostgreSQL database
-- Video rendering pipeline with FFmpeg
+- Dashboard UI for project management
+- Video rendering pipeline with FFmpeg worker
 - Stripe billing integration
-- Affiliate system
+- Affiliate system UI
 - Admin dashboard
 
 ### Planned Features
