@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install --frozen-lockfile=false",
   "framework": "nextjs",
   "functions": {
     "src/app/api/stripe/webhook/route.ts": {
