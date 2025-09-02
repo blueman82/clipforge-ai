@@ -107,7 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - pnpm workspace installation hangs on Apple Silicon (ARM64)
 - npm incompatible with workspace:* syntax from pnpm
 - Vercel pnpm encountering npm registry ERR_INVALID_THIS errors
-- Workaround: Set rootDirectory to apps/web and use npm install for web app only
+- Workaround: Use cd apps/web in install/build commands and set outputDirectory
 
 ### Planned Features
 - Export functionality with credit system
