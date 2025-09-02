@@ -22,6 +22,7 @@
 - [x] **Project API Routes** - Full CRUD operations for projects with ownership validation
 - [x] **BullMQ Job Queues** - Redis-based job processing system for rendering pipeline
 - [x] **Script Generation Worker** - First stage of rendering pipeline with scene processing
+- [x] **TTS Generation Worker** - Text-to-speech conversion with ElevenLabs, Azure Speech, and mock providers
 - [x] Fix integration issues and type errors in video rendering pipeline
 - [x] Create comprehensive environment configuration (.env.example) with all required variables
 - [x] Set up Stripe billing integration library with pricing configuration
