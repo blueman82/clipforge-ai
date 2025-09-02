@@ -104,6 +104,7 @@
 - [x] Fixed Next.js 15 breaking change: headers() now returns Promise<ReadonlyHeaders>
 - [x] Updated Stripe webhook to properly await headers() before accessing methods
 - [x] Complete Vercel environment variable setup (all credentials obtained and ready)
+- [x] **Website Crawling Tool** - Created comprehensive website crawler script to identify 404 errors and missing routes
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
 
