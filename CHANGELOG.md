@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
+### Deployment Preparation (2025-09-02 23:38)
+- **Simplified Vercel monorepo configuration**: Following Vercel's best practices
+  - Simplified root vercel.json to only install and build commands
+  - Created apps/web/vercel.json for webhook function configuration
+  - Removed unsupported 'root' property from vercel.json
+  - Root directory should be configured as 'apps/web' in Vercel dashboard
+  - Configuration follows Vercel's official monorepo documentation
+
 ### Deployment Preparation (2025-09-02 23:36)
 - **Fixed Vercel build path configuration**: Specified root directory for monorepo
   - Added 'root': 'apps/web' to vercel.json to specify Next.js app location
