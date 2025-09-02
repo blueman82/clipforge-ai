@@ -23,12 +23,11 @@
 - [ ] Set up Stripe billing integration
 
 ### 📋 Up Next
-1. Set up Stripe billing integration
-2. Build affiliate system
-3. Configure monitoring and observability
-4. Create additional marketing pages (affiliate, blog)
-5. Add SEO and legal pages
-6. Deploy to production
+1. Build affiliate system
+2. Configure monitoring and observability
+3. Create additional marketing pages (affiliate, blog)
+4. Add SEO and legal pages
+5. Deploy to production
 
 ## Epic Progress
 
