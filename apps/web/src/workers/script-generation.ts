@@ -100,7 +100,7 @@ function validateTemplateCompatibility(template: any, scenes: any[]): boolean {
     return false
   }
   
-  const requiredTypes = [...new Set(scenes.map(s => s.type))]
+  const requiredTypes = Array.from(new Set(scenes.map(s => s.type)))
   const supportedTypes = template.supportedSceneTypes || ['intro', 'main', 'outro']
   
   return requiredTypes.every(type => supportedTypes.includes(type))
