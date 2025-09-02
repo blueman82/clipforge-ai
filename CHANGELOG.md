@@ -122,6 +122,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - User locating Google Client Secret in Google Cloud Console credentials page
   - Fixed Prisma generate command for Vercel build (added --schema path to build script)
   - Resolved Vercel build error: "Prisma has detected that this project was built on Vercel"
+  - Added missing ESLint TypeScript dependencies for build linting
+  - Fixed NextAuth useSession error by creating SessionProvider wrapper component
+  - All major Vercel build blockers resolved - ready for environment variable configuration
 
 ### In Development
 - Affiliate system UI
