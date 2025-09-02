@@ -108,6 +108,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Vercel build now uses correct latest commit with all fixes applied
 - Fixed ESLint build error by adding eslint and eslint-config-next to devDependencies
 - Removed package-lock.json to resolve yarn/npm lock file conflicts
+- Environment variable setup in progress:
+  - Stripe publishable key obtained and ready for Vercel configuration
+  - Awaiting Stripe secret key for complete billing integration
+  - OAuth provider setup pending (Google, GitHub credentials needed)
 
 ### In Development
 - Affiliate system UI
