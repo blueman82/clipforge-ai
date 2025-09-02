@@ -23,6 +23,7 @@
 - [x] Set up Stripe billing integration library with pricing configuration
 - [x] Implement complete Stripe billing integration (checkout, webhooks, credit system)
 - [x] Update database schema with subscription status fields and format Prisma schema
+- [x] Create Docker Compose configuration for PostgreSQL and Redis infrastructure
 
 ### 🚧 In Progress
 
