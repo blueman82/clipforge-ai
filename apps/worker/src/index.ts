@@ -193,7 +193,7 @@ const compositionWorker = new Worker('video-composition', async (job: Job) => {
     })
 
     console.log(`Video composition completed for project ${projectId}`)
-    return { success: true, previewUrl: previewVideo.url }
+    return { success: true, previewUrl: previewVideo.outputPath }
   } catch (error) {
     console.error(`Video composition failed for job ${job.id}:`, error)
     
