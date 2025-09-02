@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
+### Deployment Preparation (2025-09-03 00:08)
+- **Added TypeScript declarations for database package**: Fixed compilation error
+  - Created index.d.ts with proper type exports for PrismaClient and prisma
+  - Fixes TypeScript error: "Could not find a declaration file for module '@clipforge/database'"
+  - Maintains type safety while using JavaScript runtime
+  - Build verified with TypeScript checking enabled
+
 ### Deployment Preparation (2025-09-02 23:48)
 - **Fixed webpack build error with database package**: Converted to JavaScript
   - Renamed index.ts to index.js in database package
