@@ -74,6 +74,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added subscription status and pricing fields to User model
   - Formatted and validated Prisma schema structure
   - Enhanced billing integration compatibility
+- Docker infrastructure setup:
+  - PostgreSQL database container with health checks
+  - Redis container for BullMQ job queues with persistence
+  - Redis Insight for monitoring and debugging
+  - Complete development environment orchestration
 
 ### In Development
 - Affiliate system UI
