@@ -1,6 +1,11 @@
+import { Footer } from '@/components/layout/footer'
+import { Header } from '@/components/layout/header'
+
 export default function AffiliatePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 py-16">
         {/* Header with New Badge */}
         <div className="text-center mb-16">
