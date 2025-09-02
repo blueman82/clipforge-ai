@@ -135,6 +135,7 @@
 - [x] **Platform Dependency Fix** - Removed lockfiles to fix Vercel Linux x64 build conflicts
 - [x] **TypeScript Navigation Types** - Resolved all 24 navigation menu type errors for clean build
 - [x] **Cross-Platform SWC Support** - Added optional dependencies for all platform SWC binaries
+- [x] **Deprecated Package Removal** - Removed fluent-ffmpeg and replaced with native child_process
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
 
 ### 📋 Up Next
