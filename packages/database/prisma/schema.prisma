@@ -56,7 +56,8 @@ model User {
   // Billing
   stripeCustomerId       String?   @unique
   stripeSubscriptionId   String?   @unique
-  stripePriceId          String?
+  subscriptionStatus     String?
+  subscriptionPriceId    String?
   stripeCurrentPeriodEnd DateTime?
   
   // Credits system
