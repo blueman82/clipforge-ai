@@ -63,8 +63,10 @@ export class VideoCompositionService {
       const videoWithoutAudio = await this.concatenateSegments(videoSegments)
       tempFiles.push(videoWithoutAudio)
 
-      // Step 3: Add audio track
-      await this.addAudioTrack(videoWithoutAudio, audioData.audioPath, outputPath)
+      // Step 3: Concatenate audio segments and add to video
+      const concatenatedAudio = await this.concatenateAudioSegments(audioData)
+      tempFiles.push(concatenatedAudio)
+      await this.addAudioTrack(videoWithoutAudio, concatenatedAudio, outputPath)
 
       // Step 4: Get video metadata
       const metadata = await this.getVideoMetadata(outputPath)
