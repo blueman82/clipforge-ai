@@ -1,23 +1,31 @@
 import { Redis } from 'ioredis'
 
 // Redis connection configuration
-const redisConfig = {
-  host: process.env.REDIS_HOST || 'localhost',
-  port: parseInt(process.env.REDIS_PORT || '6379'),
-  password: process.env.REDIS_PASSWORD,
-  // Connection options
-  retryDelayOnFailover: 100,
-  enableReadyCheck: false,
-  maxRetriesPerRequest: null,
-  // For production, you might want to add more config
-  ...(process.env.REDIS_URL && {
-    // Parse Redis URL if provided (for services like Upstash)
-    // Format: redis://username:password@host:port
-  }),
+function createRedisConnection() {
+  if (process.env.REDIS_URL) {
+    // Use Redis URL if provided (for services like Upstash, Railway, etc.)
+    return new Redis(process.env.REDIS_URL, {
+      retryDelayOnFailover: 100,
+      enableReadyCheck: false,
+      maxRetriesPerRequest: null,
+    })
+  }
+
+  // Use individual config options
+  const redisConfig = {
+    host: process.env.REDIS_HOST || 'localhost',
+    port: parseInt(process.env.REDIS_PORT || '6379'),
+    password: process.env.REDIS_PASSWORD,
+    retryDelayOnFailover: 100,
+    enableReadyCheck: false,
+    maxRetriesPerRequest: null,
+  }
+
+  return new Redis(redisConfig)
 }
 
 // Create Redis instance
-export const redis = new Redis(process.env.REDIS_URL || redisConfig)
+export const redis = createRedisConnection()
 
 // Handle connection events
 redis.on('connect', () => {
