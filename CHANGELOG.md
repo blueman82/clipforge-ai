@@ -47,22 +47,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - React Hook Form with Zod validation
   - Upstash Redis for rate limiting
   - Resend for email notifications
-- Video rendering pipeline with BullMQ workers:
+- Complete video rendering pipeline with BullMQ workers:
   - Script generation service with OpenAI integration
   - Text-to-speech service with multiple TTS provider support
+  - Asset selection service with Pexels/Unsplash API integration
+  - Video composition service with FFmpeg integration
   - Worker orchestration with progress tracking
   - Job queues for asynchronous video processing
   - Database integration for project status updates
 
 ### In Development
-- Asset selection and video composition services
 - Stripe billing integration
 - Affiliate system UI
 - Admin dashboard
 
 ### Planned Features
-- FFmpeg video composition integration
-- Asset management and selection
 - Export functionality with credit system
 - Multi-tier subscription model
 - Referral tracking system
