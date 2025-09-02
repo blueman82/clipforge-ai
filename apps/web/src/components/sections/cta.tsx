@@ -52,15 +52,15 @@ export function CTA() {
                 className="group"
                 asChild
               >
-                <Link href="/auth/signup">
+                <Link href="/auth/signup" >
                   Get Started Free
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Link 
-                href="/pricing" 
+              <Link
+                href="/pricing"
                 className="text-sm font-semibold leading-6 text-white hover:text-white/90"
-              >
+                >
                 View pricing <span aria-hidden="true">→</span>
               </Link>
             </div>
@@ -80,5 +80,5 @@ export function CTA() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

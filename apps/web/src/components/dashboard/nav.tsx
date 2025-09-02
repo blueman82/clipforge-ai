@@ -65,15 +65,15 @@ export function DashboardNav() {
                       ? 'bg-primary text-primary-foreground'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   )}
-                >
+                  >
                   <item.icon className="mr-3 h-4 w-4" />
                   {item.name}
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
       </div>
     </nav>
-  )
+  );
 }

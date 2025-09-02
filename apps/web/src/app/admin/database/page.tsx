@@ -29,13 +29,12 @@ export default async function DashboardPage() {
           </p>
         </div>
         <Button asChild>
-          <Link href="/dashboard/projects/new">
+          <Link href="/dashboard/projects/new" >
             <Plus className="mr-2 h-4 w-4" />
             New Project
           </Link>
         </Button>
       </div>
-
       {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
@@ -90,7 +89,6 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
       </div>
-
       {/* Recent Projects */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card className="col-span-full">
@@ -144,7 +142,6 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
       </div>
-
       {/* Quick Actions */}
       <Card>
         <CardHeader>
@@ -156,19 +153,19 @@ export default async function DashboardPage() {
         <CardContent>
           <div className="grid gap-4 md:grid-cols-3">
             <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
-              <Link href="/dashboard/projects/new">
+              <Link href="/dashboard/projects/new" >
                 <Plus className="h-6 w-6" />
                 <span>Create New Project</span>
               </Link>
             </Button>
             <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
-              <Link href="/dashboard/templates">
+              <Link href="/dashboard/templates" >
                 <Video className="h-6 w-6" />
                 <span>Browse Templates</span>
               </Link>
             </Button>
             <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
-              <Link href="/dashboard/billing">
+              <Link href="/dashboard/billing" >
                 <CreditCard className="h-6 w-6" />
                 <span>Upgrade Plan</span>
               </Link>
@@ -177,5 +174,5 @@ export default async function DashboardPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

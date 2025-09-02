@@ -86,7 +86,7 @@ export default function NewProjectPage() {
     <div className="space-y-8">
       <div className="flex items-center space-x-4">
         <Button variant="ghost" size="sm" asChild>
-          <Link href="/dashboard/projects">
+          <Link href="/dashboard/projects" >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Link>
@@ -98,7 +98,6 @@ export default function NewProjectPage() {
           </p>
         </div>
       </div>
-
       {/* Progress Indicator */}
       <div className="flex items-center space-x-4">
         {[1, 2, 3].map((stepNumber) => (
@@ -122,7 +121,6 @@ export default function NewProjectPage() {
           </div>
         ))}
       </div>
-
       {/* Step 1: Choose Template */}
       {step === 1 && (
         <Card>
@@ -159,7 +157,6 @@ export default function NewProjectPage() {
           </CardContent>
         </Card>
       )}
-
       {/* Step 2: Choose Niche */}
       {step === 2 && (
         <Card>
@@ -191,7 +188,6 @@ export default function NewProjectPage() {
           </CardContent>
         </Card>
       )}
-
       {/* Step 3: Project Details */}
       {step === 3 && (
         <Card>
@@ -244,7 +240,6 @@ export default function NewProjectPage() {
           </CardContent>
         </Card>
       )}
-
       {/* Navigation */}
       <div className="flex justify-between">
         <Button
@@ -266,5 +261,5 @@ export default function NewProjectPage() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

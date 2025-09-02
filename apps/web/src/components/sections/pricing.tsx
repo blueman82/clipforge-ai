@@ -162,7 +162,9 @@ export function Pricing() {
                     variant={plan.popular ? 'default' : 'outline'}
                     asChild
                   >
-                    <Link href={plan.name === 'Business' ? '/contact' : '/auth/signup'}>
+                    <Link
+                      href={plan.name === 'Business' ? '/contact' : '/auth/signup'}
+                      >
                       {plan.cta}
                     </Link>
                   </Button>
@@ -173,5 +175,5 @@ export function Pricing() {
         </div>
       </div>
     </section>
-  )
+  );
 }

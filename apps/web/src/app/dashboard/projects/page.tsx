@@ -106,13 +106,12 @@ export default async function ProjectsPage() {
           </p>
         </div>
         <Button asChild>
-          <Link href="/dashboard/projects/new">
+          <Link href="/dashboard/projects/new" >
             <Plus className="mr-2 h-4 w-4" />
             New Project
           </Link>
         </Button>
       </div>
-
       {/* Projects Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
@@ -188,7 +187,6 @@ export default async function ProjectsPage() {
           </Card>
         ))}
       </div>
-
       {projects.length === 0 && (
         <Card className="flex flex-col items-center justify-center py-12">
           <Video className="h-12 w-12 text-muted-foreground mb-4" />
@@ -197,7 +195,7 @@ export default async function ProjectsPage() {
             Create your first AI-generated video project to get started.
           </CardDescription>
           <Button asChild>
-            <Link href="/dashboard/projects/new">
+            <Link href="/dashboard/projects/new" >
               <Plus className="mr-2 h-4 w-4" />
               Create First Project
             </Link>
@@ -205,5 +203,5 @@ export default async function ProjectsPage() {
         </Card>
       )}
     </div>
-  )
+  );
 }
