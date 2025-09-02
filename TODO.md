@@ -80,6 +80,7 @@
 - [x] Fix Next.js metadata viewport warnings (already using viewport export pattern)
 - [x] Set metadataBase for social images to eliminate Open Graph warnings (added to layout.tsx)
 - [x] Achieved zero-warning build status - all ESLint and Next.js warnings eliminated
+- [x] Fixed package-lock.json warning by removing npm lock file (Yarn project)
 - [x] Complete Vercel environment variable setup (all credentials obtained and ready)
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
