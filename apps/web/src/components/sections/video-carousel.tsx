@@ -52,8 +52,6 @@ const sampleVideos = [
 
 export function VideoCarousel() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollXProgress } = useScroll({ container: containerRef })
-  const x = useTransform(scrollXProgress, [0, 1], ['0%', '-100%'])
 
   return (
     <section className="py-24 overflow-hidden">
