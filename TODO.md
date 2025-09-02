@@ -75,7 +75,7 @@
 - [x] Remove unused framer-motion imports in video carousel
 - [x] Fix TypeScript 'any' types in header.tsx ListItem component (added proper interface)
 - [x] Fix TypeScript 'any' types in auth.ts callbacks (replaced with proper type assertions)
-- [x] Fix EmailProvider import warning (changed to named import)
+- [x] Fix EmailProvider import warning (reverted to default import after TypeScript error)
 - [x] Complete systematic fix of all remaining ESLint errors and warnings (ALL FIXED)
 - [ ] Fix Next.js metadata viewport warnings (move to viewport export)
 - [ ] Set metadataBase for social images to eliminate Open Graph warnings
