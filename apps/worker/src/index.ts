@@ -272,7 +272,7 @@ cron.schedule('0 2 * * *', async () => {
   console.log('Running daily cleanup job...')
   try {
     // Clean up temporary files older than 24 hours
-    await videoCompositionService.cleanupTempFiles()
+    await videoCompositionService.cleanupFiles([])
     
     // Clean up failed jobs older than 7 days
     const sevenDaysAgo = new Date()
