@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     const where = {
       userId: session.user.id,
       deletedAt: null,
-      ...(status && { status }),
+      ...(status && { status: status as any }),
     }
 
     const [projects, total] = await Promise.all([
