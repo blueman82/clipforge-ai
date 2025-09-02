@@ -6,11 +6,13 @@ export const metadata: Metadata = {
   description: 'An error occurred during authentication',
 }
 
-export default function AuthErrorPage({
+export default async function AuthErrorPage({
   searchParams,
 }: {
-  searchParams: { error?: string }
+  searchParams: Promise<{ error?: string }>
 }) {
+  const params = await searchParams
+  
   const getErrorMessage = (error: string | undefined) => {
     switch (error) {
       case 'Configuration':
@@ -32,7 +34,7 @@ export default function AuthErrorPage({
             Authentication Error
           </h1>
           <p className="text-sm text-muted-foreground">
-            {getErrorMessage(searchParams.error)}
+            {getErrorMessage(params.error)}
           </p>
         </div>
         <div className="text-center space-y-2">
