@@ -17,7 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed unused imports across multiple files
   - Added proper TypeScript interfaces to replace 'any' types
   - Fixed EmailProvider import warning
-- Identified remaining build warnings for Next.js metadata
+- Fixed Next.js metadata warnings:
+  - Already using proper viewport export pattern in layout.tsx
+  - Added metadataBase for social image resolution
 
 ## [1.0.0] - 2025-09-02
 
