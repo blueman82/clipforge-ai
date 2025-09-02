@@ -165,7 +165,7 @@ export async function DELETE(
 
     // Soft delete the project
     await prisma.project.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         deletedAt: new Date(),
         status: 'DELETED',
