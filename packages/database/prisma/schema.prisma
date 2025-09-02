@@ -47,37 +47,37 @@ model User {
   emailVerified DateTime?
   image         String?
   role          Role      @default(USER)
-  
+
   // Profile fields
-  niche         String?
-  language      String?   @default("en")
-  voicePrefs    Json?
-  
+  niche      String?
+  language   String? @default("en")
+  voicePrefs Json?
+
   // Billing
   stripeCustomerId       String?   @unique
   stripeSubscriptionId   String?   @unique
   subscriptionStatus     String?
   subscriptionPriceId    String?
   stripeCurrentPeriodEnd DateTime?
-  
+
   // Credits system
-  credits       Int       @default(3)
-  
+  credits Int @default(3)
+
   // Affiliate system
-  referralCode  String?   @unique
-  referredById  String?
-  referredBy    User?     @relation("UserReferrals", fields: [referredById], references: [id])
-  referrals     User[]    @relation("UserReferrals")
-  
+  referralCode String? @unique
+  referredById String?
+  referredBy   User?   @relation("UserReferrals", fields: [referredById], references: [id])
+  referrals    User[]  @relation("UserReferrals")
+
   // Relations
-  accounts      Account[]
-  sessions      Session[]
-  projects      Project[]
-  credits_ledger CreditLedger[]
+  accounts           Account[]
+  sessions           Session[]
+  projects           Project[]
+  credits_ledger     CreditLedger[]
   affiliate_earnings AffiliateEarning[]
-  
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("users")
 }
@@ -92,74 +92,74 @@ model VerificationToken {
 }
 
 model Project {
-  id          String        @id @default(cuid())
-  title       String
-  description String?
-  status      ProjectStatus @default(DRAFT)
-  template    Json?
-  script      String?
+  id            String        @id @default(cuid())
+  title         String
+  description   String?
+  status        ProjectStatus @default(DRAFT)
+  template      Json?
+  script        String?
   voiceSettings Json?
-  
+
   // Media
-  previewUrl  String?
-  exportUrl   String?
+  previewUrl   String?
+  exportUrl    String?
   thumbnailUrl String?
-  
+
   // Processing
-  jobId       String?
-  progress    Int           @default(0)
-  
+  jobId    String?
+  progress Int     @default(0)
+
   // Owner
-  userId      String
-  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  deletedAt   DateTime?
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 
   @@map("projects")
 }
 
 model Template {
-  id          String   @id @default(cuid())
+  id          String  @id @default(cuid())
   name        String
   description String?
-  aspectRatio String   // "9:16", "16:9", "1:1"
-  config      Json     // Template configuration
-  isActive    Boolean  @default(true)
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  aspectRatio String // "9:16", "16:9", "1:1"
+  config      Json // Template configuration
+  isActive    Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("templates")
 }
 
 model CreditLedger {
-  id          String      @id @default(cuid())
-  userId      String
-  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  amount      Int         // Positive for credit, negative for debit
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  amount      Int // Positive for credit, negative for debit
   type        CreditType
   description String?
-  reference   String?     // Project ID, subscription ID, etc.
-  
-  createdAt   DateTime    @default(now())
+  reference   String? // Project ID, subscription ID, etc.
+
+  createdAt DateTime @default(now())
 
   @@map("credit_ledger")
 }
 
 model AffiliateEarning {
-  id              String   @id @default(cuid())
-  affiliateId     String
-  affiliate       User     @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
-  
-  referredUserId  String
-  amount          Decimal  @db.Decimal(10, 2)
-  status          EarningStatus @default(PENDING)
-  
-  createdAt       DateTime @default(now())
-  paidAt          DateTime?
+  id          String @id @default(cuid())
+  affiliateId String
+  affiliate   User   @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+
+  referredUserId String
+  amount         Decimal       @db.Decimal(10, 2)
+  status         EarningStatus @default(PENDING)
+
+  createdAt DateTime  @default(now())
+  paidAt    DateTime?
 
   @@map("affiliate_earnings")
 }

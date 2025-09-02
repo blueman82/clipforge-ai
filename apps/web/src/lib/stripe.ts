@@ -19,7 +19,7 @@ export const getStripePublishableKey = () => {
 // Stripe Price IDs for different credit packages
 export const STRIPE_PRICES = {
   CREDITS_10: 'price_credits_10',
-  CREDITS_50: 'price_credits_50', 
+  CREDITS_50: 'price_credits_50',
   CREDITS_100: 'price_credits_100',
   CREDITS_500: 'price_credits_500',
   MONTHLY_STARTER: 'price_monthly_starter',
@@ -79,12 +79,7 @@ export const SUBSCRIPTION_PLANS = [
     yearlyPrice: 290,
     monthlyPriceId: STRIPE_PRICES.MONTHLY_STARTER,
     yearlyPriceId: STRIPE_PRICES.YEARLY_STARTER,
-    features: [
-      '100 credits/month',
-      '1080p video exports',
-      'Basic templates',
-      'Email support',
-    ],
+    features: ['100 credits/month', '1080p video exports', 'Basic templates', 'Email support'],
     popular: false,
   },
   {
@@ -107,5 +102,5 @@ export const SUBSCRIPTION_PLANS = [
   },
 ]
 
-export type CreditPackage = typeof CREDIT_PACKAGES[0]
-export type SubscriptionPlan = typeof SUBSCRIPTION_PLANS[0]
+export type CreditPackage = (typeof CREDIT_PACKAGES)[0]
+export type SubscriptionPlan = (typeof SUBSCRIPTION_PLANS)[0]
