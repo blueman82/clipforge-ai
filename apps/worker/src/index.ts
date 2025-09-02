@@ -260,7 +260,7 @@ const exportWorker = new Worker('video-export', async (job: Job) => {
     ])
 
     console.log(`Video export completed for project ${projectId}`)
-    return { success: true, exportUrl: exportVideo.url }
+    return { success: true, exportUrl: exportVideo.outputPath }
   } catch (error) {
     console.error(`Video export failed for job ${job.id}:`, error)
     throw error
