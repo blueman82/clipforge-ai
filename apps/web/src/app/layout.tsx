@@ -10,8 +10,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ClipForge AI - Create Viral Videos in Minutes',
-  description: 'AI-powered faceless video generation platform. Transform your ideas into engaging videos with automated scripts, voiceovers, and editing.',
-  keywords: 'AI video generation, faceless videos, automated content creation, TikTok videos, YouTube Shorts',
+  description:
+    'AI-powered faceless video generation platform. Transform your ideas into engaging videos with automated scripts, voiceovers, and editing.',
+  keywords:
+    'AI video generation, faceless videos, automated content creation, TikTok videos, YouTube Shorts',
   authors: [{ name: 'ClipForge AI' }],
   openGraph: {
     title: 'ClipForge AI - Create Viral Videos in Minutes',
@@ -51,11 +53,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
