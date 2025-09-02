@@ -186,7 +186,7 @@ const compositionWorker = new Worker('video-composition', async (job: Job) => {
     await prisma.project.update({
       where: { id: projectId },
       data: { 
-        previewUrl: previewVideo.url,
+        previewUrl: previewVideo.outputPath,
         status: 'COMPLETED',
         progress: 100,
       },
