@@ -81,6 +81,8 @@
 - [x] Set metadataBase for social images to eliminate Open Graph warnings (added to layout.tsx)
 - [x] Achieved zero-warning build status - all ESLint and Next.js warnings eliminated
 - [x] Fixed package-lock.json warning by removing npm lock file (Yarn project)
+- [x] Fixed ESLint peer dependency warnings by aligning versions to v8.57.0 across workspace
+- [x] Added resolutions to prevent ESLint version conflicts in Vercel builds
 - [x] Complete Vercel environment variable setup (all credentials obtained and ready)
 - [ ] Configure custom domain clipforge-ai.com in Vercel project settings
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
