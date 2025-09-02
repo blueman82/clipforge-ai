@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-09-02
 
+### Deployment Preparation (2025-09-02 23:43)
+- **Removed packageManager field to force npm usage**: Eliminated pnpm registry errors
+  - Removed packageManager: pnpm@8.14.1 from root package.json
+  - Forces Vercel to use npm instead of detecting pnpm
+  - Eliminates ERR_INVALID_THIS registry errors during install
+  - Prevents package manager conflicts in monorepo
+  - Build verified locally with npm
+
 ### Deployment Preparation (2025-09-02 23:38)
 - **Simplified Vercel monorepo configuration**: Following Vercel's best practices
   - Simplified root vercel.json to only install and build commands
