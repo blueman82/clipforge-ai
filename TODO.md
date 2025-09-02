@@ -36,7 +36,8 @@
 - [x] Switch Vercel build from pnpm to npm due to registry issues
 - [x] Fix vercel.json schema error (removed invalid rootDirectory, added outputDirectory)
 - [x] Simplify vercel.json for Root Directory UI setting
-- [ ] Deploy to Vercel for production testing (need to set Root Directory to ./apps/web in UI)
+- [x] Remove workspace references from apps/web package.json
+- [ ] Deploy to Vercel for production testing (workspace references removed)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
