@@ -94,6 +94,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Affiliate system UI
 - Admin dashboard
 - Dependency installation fixes for Apple Silicon M1/M2 ARM64 architecture
+- Feature branch merge to main (60 commits ready)
 
 ### Known Issues
 - pnpm workspace installation hangs on Apple Silicon (ARM64)
