@@ -72,7 +72,8 @@
 - [x] Remove unused session variable in projects page
 - [x] Remove unused scroll transform variables in video carousel
 - [x] Remove unused NextAuth imports in projects page
-- [ ] Complete systematic fix of all remaining ESLint errors and warnings (6 remaining)
+- [x] Remove unused framer-motion imports in video carousel
+- [ ] Complete systematic fix of all remaining ESLint errors and warnings (4 remaining)
 - [ ] Fix Next.js metadata viewport warnings (move to viewport export)
 - [ ] Set metadataBase for social images to eliminate Open Graph warnings
 - [ ] Complete Vercel environment variable setup (NEXTAUTH_URL=https://clipforge-ai.com)
