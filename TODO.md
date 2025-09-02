@@ -33,7 +33,8 @@
 - [x] Add production environment variables to Vercel (NEXTAUTH_SECRET generated, DATABASE_URL provided)
 - [x] Fix vercel.json removing hardcoded secret references
 - [x] Fix package.json removing pnpm version requirement for Vercel compatibility
-- [ ] Deploy to Vercel for production testing (package.json fixed, ready to redeploy)
+- [x] Switch Vercel build from pnpm to npm due to registry issues
+- [ ] Deploy to Vercel for production testing (switched to npm, ready to redeploy)
 - [ ] Configure OAuth providers (Google, GitHub)
 - [ ] Set up Stripe API keys
 - [ ] Resolve pnpm workspace dependency installation on Apple Silicon ARM64 (not needed for Vercel)
