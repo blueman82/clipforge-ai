@@ -120,6 +120,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - All required credentials obtained: Google OAuth + Stripe keys ready for Vercel configuration
   - Complete environment variable checklist provided for Vercel deployment
   - User locating Google Client Secret in Google Cloud Console credentials page
+  - Fixed Prisma generate command for Vercel build (added --schema path to build script)
+  - Resolved Vercel build error: "Prisma has detected that this project was built on Vercel"
 
 ### In Development
 - Affiliate system UI
