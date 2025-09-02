@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-09-02T14:13:09.504Z",
-  "baseUrl": "http://localhost:3001",
+  "timestamp": "2025-09-02T14:23:28.550Z",
+  "baseUrl": "http://localhost:3000",
   "summary": {
     "total": 35,
-    "ok": 5,
+    "ok": 11,
     "missing": 3,
     "errors": 0
   },
@@ -16,8 +16,8 @@
     },
     {
       "route": "/about",
-      "status": 404,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "redirected": false
     },
     {
@@ -40,9 +40,9 @@
     },
     {
       "route": "/admin/jobs",
-      "status": 404,
+      "status": 307,
       "ok": false,
-      "redirected": false
+      "redirected": true
     },
     {
       "route": "/admin/settings",
@@ -70,7 +70,7 @@
     },
     {
       "route": "/api/health",
-      "status": 404,
+      "status": 503,
       "ok": false,
       "redirected": false
     },
@@ -94,67 +94,67 @@
     },
     {
       "route": "/auth/signup",
-      "status": 500,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "redirected": false
     },
     {
       "route": "/auth/verify-request",
-      "status": 500,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "redirected": false
     },
     {
       "route": "/blog",
-      "status": 500,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "redirected": false
     },
     {
       "route": "/contact",
-      "status": 500,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "redirected": false
     },
     {
       "route": "/cookies",
-      "status": 500,
-      "ok": false,
+      "status": 200,
+      "ok": true,
       "redirected": false
     },
     {
       "route": "/dashboard",
-      "status": 500,
+      "status": 307,
       "ok": false,
-      "redirected": false
+      "redirected": true
     },
     {
       "route": "/dashboard/affiliate",
-      "status": 500,
+      "status": 404,
       "ok": false,
       "redirected": false
     },
     {
       "route": "/dashboard/billing",
-      "status": 500,
+      "status": 404,
       "ok": false,
       "redirected": false
     },
     {
       "route": "/dashboard/projects",
-      "status": 500,
+      "status": 307,
       "ok": false,
-      "redirected": false
+      "redirected": true
     },
     {
       "route": "/dashboard/projects/new",
-      "status": 500,
+      "status": 307,
       "ok": false,
-      "redirected": false
+      "redirected": true
     },
     {
       "route": "/dashboard/settings",
-      "status": 500,
+      "status": 404,
       "ok": false,
       "redirected": false
     },
@@ -220,9 +220,9 @@
     }
   ],
   "missing": [
-    "/about",
-    "/admin/jobs",
-    "/api/health"
+    "/dashboard/affiliate",
+    "/dashboard/billing",
+    "/dashboard/settings"
   ],
   "errors": []
 }
