@@ -113,7 +113,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Awaiting Stripe secret key for complete billing integration
   - OAuth provider setup instructions provided (Google Cloud Console + GitHub OAuth Apps)
   - NextAuth secret generated and ready for deployment
-  - User evaluating OAuth priority vs MVP focus (Stripe billing + core features first)
+  - OAuth cost concerns addressed - Google/GitHub OAuth confirmed FREE (100k requests/month)
+  - User proceeding with OAuth setup for better user experience
 
 ### In Development
 - Affiliate system UI
