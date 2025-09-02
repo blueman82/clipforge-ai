@@ -5,10 +5,10 @@
  * 
  * This script crawls localhost:3001 to discover all routes and identify 404 errors.
  * It uses multiple strategies:
- * 1. Sitemap generation
- * 2. Link checking 
- * 3. Route discovery from navigation components
- * 4. Manual URL testing
+ * 1. Route discovery from navigation components
+ * 2. Manual URL testing with built-in fetch
+ * 3. Comprehensive reporting
+ * 4. Error analysis
  */
 
 const fs = require('fs');
