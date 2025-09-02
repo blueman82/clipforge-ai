@@ -62,28 +62,22 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/pricing" className={navigationMenuTriggerStyle()}>
-                  Pricing
-                </Link>
-              </NavigationMenuLink>
+              <Link href="/pricing" className={navigationMenuTriggerStyle()}>
+                Pricing
+              </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/affiliate" className={navigationMenuTriggerStyle()}>
-                  <span className="mr-1">Affiliates</span>
-                  <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-                    New
-                  </span>
-                </Link>
-              </NavigationMenuLink>
+              <Link href="/affiliate" className={navigationMenuTriggerStyle()}>
+                <span className="mr-1">Affiliates</span>
+                <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                  New
+                </span>
+              </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/blog" className={navigationMenuTriggerStyle()}>
-                  Blog
-                </Link>
-              </NavigationMenuLink>
+              <Link href="/blog" className={navigationMenuTriggerStyle()}>
+                Blog
+              </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
@@ -116,20 +110,18 @@ const ListItem = React.forwardRef<
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
+      <NavigationMenuLink
+        ref={ref}
+        className={cn(
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          className
+        )}
+        {...props}
+      >
+        <div className="text-sm font-medium leading-none">{title}</div>
+        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          {children}
+        </p>
       </NavigationMenuLink>
     </li>
   )
