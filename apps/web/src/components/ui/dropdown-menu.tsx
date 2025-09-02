@@ -1,12 +1,23 @@
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
-import { Check, ChevronRight, Circle } from "lucide-react"
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
-const DropdownMenu = DropdownMenuPrimitive.Root
+// Simple dropdown menu implementation without Radix primitives
+const DropdownMenu = ({ children }: { children: React.ReactNode }) => {
+  return <div className="relative inline-block">{children}</div>
+}
 
-const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
+const DropdownMenuTrigger = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, children, ...props }, ref) => (
+  <button
+    ref={ref}
+    className={cn("inline-flex items-center", className)}
+    {...props}
+  >
+    {children}
+  </button>
+))
 
 const DropdownMenuGroup = DropdownMenuPrimitive.Group
 
